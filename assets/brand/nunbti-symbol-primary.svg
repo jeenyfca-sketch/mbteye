@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">눈비티아이 프라이머리 심볼</title>
+  <desc id="desc">눈 모양 안에 네 가지 색의 홍채와 별빛 동공을 배치한 눈비티아이 채널 심볼</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="64%">
+      <stop offset="0%" stop-color="#163E45"/>
+      <stop offset="58%" stop-color="#102B32"/>
+      <stop offset="100%" stop-color="#081418"/>
+    </radialGradient>
+    <radialGradient id="irisGlow" cx="50%" cy="48%" r="52%">
+      <stop offset="0%" stop-color="#F9FFF7" stop-opacity="0.96"/>
+      <stop offset="35%" stop-color="#72D7C7" stop-opacity="0.82"/>
+      <stop offset="74%" stop-color="#17464D" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#071114"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="28" flood-color="#000000" flood-opacity="0.34"/>
+    </filter>
+  </defs>
+
+  <rect width="1024" height="1024" rx="220" fill="url(#bg)"/>
+
+  <g filter="url(#softShadow)">
+    <path d="M122 512C226 356 356 278 512 278s286 78 390 234c-104 156-234 234-390 234S226 668 122 512Z" fill="#F4F1E7"/>
+    <path d="M171 512c94-123 207-184 341-184s247 61 341 184c-94 123-207 184-341 184S265 635 171 512Z" fill="#E9F7F2"/>
+  </g>
+
+  <circle cx="512" cy="512" r="224" fill="#092126"/>
+  <path d="M512 288a224 224 0 0 1 224 224H512Z" fill="#2BD4B8"/>
+  <path d="M736 512a224 224 0 0 1-224 224V512Z" fill="#F2C94C"/>
+  <path d="M512 736a224 224 0 0 1-224-224h224Z" fill="#6EA8FE"/>
+  <path d="M288 512a224 224 0 0 1 224-224v224Z" fill="#F27C8D"/>
+  <circle cx="512" cy="512" r="210" fill="url(#irisGlow)" opacity="0.54"/>
+
+  <g fill="none" stroke="#062027" stroke-linecap="round" opacity="0.5">
+    <path d="M512 308v408" stroke-width="12"/>
+    <path d="M308 512h408" stroke-width="12"/>
+    <circle cx="512" cy="512" r="160" stroke-width="10"/>
+    <circle cx="512" cy="512" r="102" stroke-width="7"/>
+  </g>
+
+  <g stroke="#F9FFF7" stroke-linecap="round" opacity="0.75">
+    <path d="M512 320v60" stroke-width="8"/>
+    <path d="M512 644v60" stroke-width="8"/>
+    <path d="M320 512h60" stroke-width="8"/>
+    <path d="M644 512h60" stroke-width="8"/>
+    <path d="M375 375l42 42" stroke-width="6"/>
+    <path d="M607 607l42 42" stroke-width="6"/>
+    <path d="M649 375l-42 42" stroke-width="6"/>
+    <path d="M417 607l-42 42" stroke-width="6"/>
+  </g>
+
+  <circle cx="512" cy="512" r="82" fill="#071114"/>
+  <path d="M512 422l22 62 66 4-51 42 17 64-54-36-54 36 17-64-51-42 66-4Z" fill="#F9FFF7"/>
+  <circle cx="570" cy="438" r="30" fill="#FFFFFF" opacity="0.72"/>
+  <circle cx="592" cy="422" r="12" fill="#FFFFFF" opacity="0.58"/>
+
+  <path d="M122 512C226 356 356 278 512 278s286 78 390 234c-104 156-234 234-390 234S226 668 122 512Z" fill="none" stroke="#F9FFF7" stroke-width="24" stroke-linejoin="round"/>
+</svg>

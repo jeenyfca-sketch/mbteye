@@ -1,0 +1,60 @@
+[
+  {
+    "id": "rim",
+    "question": "내 홍채 테두리는 어떤 편인가요?",
+    "answers": [
+      { "label": "흐릿하고 부드러운 편", "scores": { "soft": 2 } },
+      { "label": "보통 정도로 보이는 편", "scores": { "soft": 1, "edge": 1 } },
+      { "label": "또렷하고 선명한 편", "scores": { "edge": 2 } }
+    ]
+  },
+  {
+    "id": "texture",
+    "question": "홍채 안쪽의 선이나 무늬는 어떤가요?",
+    "answers": [
+      { "label": "맑고 단순해 보인다", "scores": { "glow": 1, "soft": 1 } },
+      { "label": "적당히 결이 보인다", "scores": { "texture": 1, "depth": 1 } },
+      { "label": "선과 무늬가 많은 편이다", "scores": { "texture": 2 } }
+    ]
+  },
+  {
+    "id": "energy",
+    "question": "사람들이 내 눈빛을 말할 때 가까운 표현은?",
+    "answers": [
+      { "label": "차분하다", "scores": { "depth": 2 } },
+      { "label": "부드럽다", "scores": { "soft": 2 } },
+      { "label": "반짝인다", "scores": { "glow": 2 } },
+      { "label": "강렬하다", "scores": { "edge": 2 } }
+    ]
+  },
+  {
+    "id": "gaze",
+    "question": "대화할 때 내 시선은 어떤 느낌에 가까운가요?",
+    "answers": [
+      { "label": "편안하게 머무른다", "scores": { "soft": 2 } },
+      { "label": "상대를 세밀하게 관찰한다", "scores": { "texture": 2 } },
+      { "label": "한 가지에 깊게 집중한다", "scores": { "depth": 2 } },
+      { "label": "빠르게 반응하고 움직인다", "scores": { "glow": 2 } }
+    ]
+  },
+  {
+    "id": "impression",
+    "question": "첫인상으로 자주 듣는 말은?",
+    "answers": [
+      { "label": "다정해 보인다", "scores": { "soft": 1, "glow": 1 } },
+      { "label": "신중해 보인다", "scores": { "depth": 1, "edge": 1 } },
+      { "label": "생각이 많아 보인다", "scores": { "texture": 1, "depth": 1 } },
+      { "label": "에너지가 있어 보인다", "scores": { "glow": 2 } }
+    ]
+  },
+  {
+    "id": "choice",
+    "question": "내가 더 끌리는 표현은?",
+    "answers": [
+      { "label": "깊게 보는 사람", "scores": { "depth": 2 } },
+      { "label": "따뜻하게 보는 사람", "scores": { "soft": 2 } },
+      { "label": "분명하게 보는 사람", "scores": { "edge": 2 } },
+      { "label": "새롭게 보는 사람", "scores": { "texture": 1, "glow": 1 } }
+    ]
+  }
+]

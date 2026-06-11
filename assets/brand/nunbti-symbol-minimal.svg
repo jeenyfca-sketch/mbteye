@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">눈비티아이 미니멀 심볼</title>
+  <desc id="desc">작은 프로필 이미지에서도 잘 보이는 단순한 눈과 4분면 홍채 심볼</desc>
+  <rect width="1024" height="1024" rx="224" fill="#0B171A"/>
+  <path d="M118 512C222 356 354 278 512 278s290 78 394 234c-104 156-236 234-394 234S222 668 118 512Z" fill="#F7F3EA"/>
+  <path d="M178 512c92-116 204-174 334-174s242 58 334 174c-92 116-204 174-334 174s-242-58-334-174Z" fill="#102B32"/>
+
+  <circle cx="512" cy="512" r="210" fill="#F7F3EA"/>
+  <path d="M512 302a210 210 0 0 1 210 210H512Z" fill="#29C7B1"/>
+  <path d="M722 512a210 210 0 0 1-210 210V512Z" fill="#F0C247"/>
+  <path d="M512 722a210 210 0 0 1-210-210h210Z" fill="#5D9CEC"/>
+  <path d="M302 512a210 210 0 0 1 210-210v210Z" fill="#E87486"/>
+
+  <path d="M512 322v380M322 512h380" stroke="#0B171A" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="512" cy="512" r="88" fill="#0B171A"/>
+  <circle cx="552" cy="466" r="30" fill="#FFFFFF"/>
+  <path d="M512 423l20 57 60 4-47 38 16 58-49-32-49 32 16-58-47-38 60-4Z" fill="#FFFFFF" opacity="0.92"/>
+</svg>

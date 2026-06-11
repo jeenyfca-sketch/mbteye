@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>눈비티아이 | 눈으로 보는 나의 성향</title>
+  <meta name="description" content="홍채와 눈빛의 인상을 바탕으로 나의 분위기와 성향을 재미있게 탐색하는 눈BTI 테스트입니다.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="눈비티아이 홈">
+      <img src="./assets/brand/nunbti-symbol-minimal.svg" alt="">
+      <span>눈비티아이</span>
+    </a>
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="#test">테스트</a>
+      <a href="#types">유형</a>
+      <a href="#content">콘텐츠</a>
+      <a href="#submit">분석 신청</a>
+      <a href="#ethics">윤리 기준</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero section">
+      <div class="hero-copy">
+        <p class="eyebrow">IRIS · MOOD · TYPE</p>
+        <h1>눈에도 성향이 있다면?</h1>
+        <p class="lead">홍채의 색, 무늬, 선, 테두리와 눈빛의 인상을 바탕으로 나의 분위기와 성향을 재미있게 탐색해보세요.</p>
+        <div class="actions">
+          <a class="button primary" href="#test">내 눈BTI 테스트하기</a>
+          <a class="button secondary" href="#types">유형 먼저 보기</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <img src="./assets/brand/nunbti-symbol-primary.svg" alt="">
+      </div>
+    </section>
+
+    <section class="notice">
+      눈비티아이는 의학적 진단이나 성격의 절대 판정이 아닌, 홍채와 눈빛의 인상을 바탕으로 한 관찰형 성향 콘텐츠입니다.
+    </section>
+
+    <section id="test" class="section test-section">
+      <div class="section-heading">
+        <p class="eyebrow">1-2분 테스트</p>
+        <h2>자가 관찰로 찾는 눈BTI</h2>
+        <p>사진 업로드 없이, 내 눈의 인상과 주변에서 듣는 표현을 선택해 결과를 확인합니다.</p>
+      </div>
+      <div class="test-shell">
+        <div class="progress"><span id="progressBar"></span></div>
+        <div id="questionArea" class="question-area"></div>
+        <div id="resultArea" class="result-area hidden"></div>
+        <div class="test-controls">
+          <button id="prevBtn" class="button ghost" type="button">이전</button>
+          <button id="restartBtn" class="button ghost hidden" type="button">다시 하기</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="types" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">8가지 눈BTI</p>
+        <h2>유형 아카이브</h2>
+        <p>결과 유형은 단정이 아니라 눈의 인상과 자가 응답을 연결한 성향 이미지입니다.</p>
+      </div>
+      <div id="typeGrid" class="type-grid"></div>
+    </section>
+
+    <section id="content" class="section content-band">
+      <div class="section-heading">
+        <p class="eyebrow">콘텐츠 허브</p>
+        <h2>유튜브로 이어지는 주제</h2>
+      </div>
+      <div class="content-grid">
+        <article>
+          <span>홍채 패턴</span>
+          <h3>테두리가 진한 눈은 어떤 분위기일까?</h3>
+          <p>자기 기준, 집중감, 첫인상 강도를 연결해 풀어보는 쇼츠 주제.</p>
+        </article>
+        <article>
+          <span>눈빛 MBTI</span>
+          <h3>T처럼 보이는 눈, F처럼 보이는 눈</h3>
+          <p>판정이 아니라 인상 차이로 보는 눈빛 유형 비교 콘텐츠.</p>
+        </article>
+        <article>
+          <span>관계 스타일</span>
+          <h3>다정하지만 선이 있는 눈빛</h3>
+          <p>관계에서의 거리감, 배려, 자기 보호를 부드럽게 해석합니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="submit" class="section split">
+      <div>
+        <p class="eyebrow">참여형 분석</p>
+        <h2>내 눈도 분석받고 싶다면</h2>
+        <p>구독자 눈BTI 분석은 사전 동의, 익명 처리, 삭제 요청 가능 원칙을 기준으로 운영합니다. MVP에서는 실제 업로드 대신 촬영 가이드와 신청 안내를 제공합니다.</p>
+      </div>
+      <div class="submit-card">
+        <h3>사진 촬영 가이드</h3>
+        <ul>
+          <li>밝은 자연광에서 촬영</li>
+          <li>눈 주변만 보이도록 크롭</li>
+          <li>필터와 과한 보정 피하기</li>
+          <li>콘텐츠 사용 동의 범위 확인</li>
+        </ul>
+        <a class="button primary" href="#ethics">신청 기준 먼저 보기</a>
+      </div>
+    </section>
+
+    <section id="ethics" class="section ethics">
+      <div class="section-heading">
+        <p class="eyebrow">안전한 해석</p>
+        <h2>눈을 평가하지 않고, 분위기를 발견합니다</h2>
+      </div>
+      <div class="ethics-list">
+        <p>사용하지 않는 표현: 100% 맞습니다, 반드시 그렇습니다, 성격이 나쁩니다, 병이 있습니다.</p>
+        <p>사용하는 표현: 이런 분위기로 보일 수 있어요, 이런 경향으로 볼 수 있어요, 재미로 비교해보면 좋습니다.</p>
+        <p>건강 문제는 전문가와 상담해야 하며, 눈BTI는 진단을 대체하지 않습니다.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <strong>눈비티아이</strong>
+    <span>눈으로 보는 나의 성향</span>
+  </footer>
+
+  <script src="./script.js" type="module"></script>
+</body>
+</html>
