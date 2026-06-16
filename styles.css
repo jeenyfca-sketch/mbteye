@@ -70,6 +70,10 @@ a {
   color: var(--mint);
 }
 
+.nav a {
+  white-space: nowrap;
+}
+
 .section {
   padding: clamp(64px, 8vw, 112px) clamp(20px, 5vw, 72px);
 }
@@ -271,13 +275,15 @@ h3 {
 }
 
 .type-grid,
-.content-grid {
+.content-grid,
+.rayid-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 16px;
 }
 
 .type-card,
+.rayid-card,
 .content-grid article,
 .submit-card,
 .ethics-list {
@@ -288,6 +294,7 @@ h3 {
 }
 
 .type-card p,
+.rayid-card p,
 .content-grid p,
 .split p,
 .ethics-list p {
@@ -296,8 +303,84 @@ h3 {
 }
 
 .type-card strong,
+.rayid-card span,
 .content-grid span {
   color: var(--yellow);
+}
+
+.rayid-section {
+  background:
+    linear-gradient(180deg, rgba(247, 243, 234, 0.02), rgba(114, 215, 199, 0.055)),
+    var(--bg);
+}
+
+.rayid-card {
+  display: grid;
+  gap: 14px;
+}
+
+.rayid-card h3 {
+  font-size: 22px;
+}
+
+.rayid-card strong {
+  color: var(--mint);
+  line-height: 1.5;
+}
+
+.rayid-card a {
+  width: fit-content;
+  border-bottom: 1px solid rgba(240, 194, 71, 0.6);
+  color: var(--yellow);
+  font-weight: 800;
+}
+
+.iris-sample {
+  width: 100%;
+  aspect-ratio: 1;
+  max-height: 260px;
+  border: 1px solid rgba(247, 243, 234, 0.18);
+  border-radius: 50%;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.58), 0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+.iris-sample.jewel {
+  background:
+    radial-gradient(circle, #020507 0 17%, transparent 18%),
+    radial-gradient(circle at 38% 34%, #f0c247 0 2.4%, transparent 2.8%),
+    radial-gradient(circle at 66% 42%, #f0c247 0 2%, transparent 2.6%),
+    radial-gradient(circle at 49% 69%, #d87a4f 0 2.2%, transparent 2.9%),
+    repeating-conic-gradient(from 8deg, #255b63 0 8deg, #8fd8d0 9deg 11deg, #143138 12deg 18deg);
+}
+
+.iris-sample.flower {
+  background:
+    radial-gradient(circle, #020507 0 17%, transparent 18%),
+    repeating-radial-gradient(ellipse at center, transparent 0 20px, rgba(240, 194, 71, 0.34) 22px 28px, transparent 30px 46px),
+    repeating-conic-gradient(from 4deg, #365f55 0 7deg, #d8a94a 8deg 13deg, #17343a 14deg 20deg);
+}
+
+.iris-sample.stream {
+  background:
+    radial-gradient(circle, #020507 0 17%, transparent 18%),
+    repeating-conic-gradient(from 12deg, #19444f 0 10deg, #7fc7be 11deg 14deg, #24444a 15deg 28deg),
+    radial-gradient(circle, #5d9cec 0, #123940 72%);
+}
+
+.iris-sample.shaker {
+  background:
+    radial-gradient(circle, #020507 0 17%, transparent 18%),
+    radial-gradient(circle at 62% 34%, #f0c247 0 2.2%, transparent 2.8%),
+    radial-gradient(circle at 32% 62%, #e87486 0 2%, transparent 2.8%),
+    repeating-radial-gradient(ellipse at center, transparent 0 24px, rgba(232, 116, 134, 0.22) 26px 32px, transparent 34px 48px),
+    repeating-conic-gradient(from -8deg, #123940 0 7deg, #72d7c7 8deg 12deg, #3a5762 13deg 19deg, #b6844b 20deg 23deg);
+}
+
+.rayid-note {
+  max-width: 920px;
+  margin: 24px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
 }
 
 .content-band {
