@@ -15,6 +15,7 @@
     </a>
     <nav class="nav" aria-label="주요 메뉴">
       <a href="#test">테스트</a>
+      <a href="#formula">16유형</a>
       <a href="#types">유형</a>
       <a href="#rayid">Rayid</a>
       <a href="#content">콘텐츠</a>
@@ -57,6 +58,50 @@
           <button id="prevBtn" class="button ghost" type="button">이전</button>
           <button id="restartBtn" class="button ghost hidden" type="button">다시 하기</button>
         </div>
+      </div>
+    </section>
+
+    <section id="formula" class="section formula-section">
+      <div class="section-heading">
+        <p class="eyebrow">NBTI 16유형 계산 기준</p>
+        <h2>홍채 관찰 4단계로 만드는 <span class="nowrap">눈BTI</span> 코드</h2>
+        <p>눈BTI 16유형은 네 가지 관찰 지표를 각각 한 글자씩 연결해 만듭니다. 이 기준은 사람을 고정하는 검사가 아니라, 홍채 관찰을 통해 성향과 에너지 반응을 이해하기 위한 콘텐츠형 해석 도구입니다.</p>
+      </div>
+
+      <div class="formula-flow" aria-label="눈BTI 16유형 산출 흐름">
+        <article>
+          <span>1단계 · E/I</span>
+          <h3>동공과의 거리</h3>
+          <p><strong>넓음 = E</strong> 외부 반응, 개방성, 에너지 확산</p>
+          <p><strong>좁음 = I</strong> 내면 집중, 신중함, 에너지 보존</p>
+        </article>
+        <article>
+          <span>2단계 · S/N</span>
+          <h3>자율신경선 구조</h3>
+          <p><strong>굵고 뚜렷함 = S</strong> 현실 감각, 즉각 반응, 감각 중심</p>
+          <p><strong>가늘고 흐릿함 = N</strong> 직관, 상상, 의미 중심</p>
+        </article>
+        <article>
+          <span>3단계 · T/F</span>
+          <h3>홍채 섬유 밀도</h3>
+          <p><strong>치밀함 = T</strong> 분석, 기준, 구조화</p>
+          <p><strong>느슨함 = F</strong> 공감, 유연성, 관계 반응</p>
+        </article>
+        <article>
+          <span>4단계 · J/P</span>
+          <h3>스트레스링 개수</h3>
+          <p><strong>3개 이상 = J</strong> 통제, 계획, 긴장 축적</p>
+          <p><strong>0-2개 = P</strong> 유동성, 적응, 즉흥성</p>
+        </article>
+      </div>
+
+      <div class="formula-example">
+        <div>
+          <p class="eyebrow">예시 결과</p>
+          <h3>넓음 + 가늘고 흐릿함 + 느슨함 + 스트레스링 4개</h3>
+          <p>각 기준을 연결하면 <strong>E + N + F + J</strong>가 되어 최종 눈BTI 결과는 <strong>ENFJ</strong>로 표시됩니다.</p>
+        </div>
+        <code>calculateNunBTI('넓음', '가늘고 흐릿함', '느슨함', 4) → ENFJ</code>
       </div>
     </section>
 
