@@ -1,70 +1,211 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>눈BTI | 나의 홍채 성향 코드</title>
-  <meta name="description" content="홍채 관찰 4단계로 눈BTI 16유형 코드를 확인하는 콘텐츠형 테스트입니다.">
-  <link rel="stylesheet" href="./styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>눈BTI (NoonBTI) - 당신의 진짜 성격</title>
+    <style>
+        /* 기본 스타일 및 테마 정의 */
+        body {
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            background-color: #fcfbfa;
+            color: #2b2b2b;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        /* 카드 방식 슬라이드 연출 */
+        .page {
+            display: none; /* 기본적으로 숨김 */
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-top: 50px;
+        }
+        .page.active {
+            display: block; /* active 클래스가 붙은 페이지인 것만 화면에 표시 */
+        }
+        h1 { color: #2e4427; font-size: 24px; margin-bottom: 20px; }
+        p { font-size: 16px; line-height: 1.6; color: #555; }
+
+        /* 버튼 및 선택지 스타일 */
+        .btn-main {
+            background-color: #4a6741;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+        .btn-main:hover { background-color: #385230; }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            background-color: #f5f3ee;
+            border: 1px solid #d1cbd4;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+        .option-btn:hover {
+            background-color: #e3ebd9;
+            border-color: #4a6741;
+        }
+
+        /* 이미지 가이드 영역 프리셋 */
+        .img-placeholder {
+            width: 150px;
+            height: 150px;
+            background-color: #eaeaea;
+            border-radius: 50%;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 14px;
+            border: 3px solid #4a6741;
+        }
+    </style>
 </head>
 <body>
-  <main>
-    <section id="formula" class="container">
-      <div class="nbti-wizard" aria-label="눈BTI 16유형 확인">
-        <div class="wizard-page active" data-page="intro">
-          <h1>눈BTI (NoonBTI)</h1>
-          <div class="wizard-iris" aria-hidden="true">눈동자 그래픽</div>
-          <div class="sub-quote">"눈동자는 영혼의 창이자, 타고난 성향을 비춰보는 지도입니다."</div>
-          <p class="main-message">
-            나의 홍채 성향 코드를 알고 싶나요?<br>
-            단 몇 개의 질문으로 눈동자 속에 담긴<br>성향의 힌트를 찾아봅니다.
-          </p>
-          <button class="btn-main" type="button" data-next-page="q1">내 눈BTI 확인하기 (시작)</button>
-        </div>
 
-        <div class="wizard-page" data-page="q1">
-          <h2>1번 질문: 동공과의 거리 판단</h2>
-          <div class="wizard-iris guide" aria-hidden="true">가이드 그림 1</div>
-          <p>거울을 보고 눈 중심의 검은 동공과 그 주변을 동그랗게 감싸는 자율신경선 사이의 거리를 보세요.</p>
-          <button class="option-btn" type="button" data-answer-key="distance" data-answer-value="넓음" data-next-page="q2"><strong>넓음</strong> 동공과 선 사이의 간격이 넓고 시원하게 트여 있어요.</button>
-          <button class="option-btn" type="button" data-answer-key="distance" data-answer-value="좁음" data-next-page="q2"><strong>좁음</strong> 선이 동공에 바짝 붙어 있어서 좁아 보여요.</button>
-        </div>
+<div class="container">
 
-        <div class="wizard-page" data-page="q2">
-          <h2>2번 질문: 자율신경선의 구조 판단</h2>
-          <div class="wizard-iris guide" aria-hidden="true">가이드 그림 2</div>
-          <p>동공 주변을 둘러싼 자율신경선 라인의 진하기와 두께를 관찰해 보세요.</p>
-          <button class="option-btn" type="button" data-answer-key="structure" data-answer-value="굵고 뚜렷함" data-next-page="q3"><strong>굵고 뚜렷함</strong> 선이 밧줄처럼 하얗고 두껍게 눈에 확 띄어요.</button>
-          <button class="option-btn" type="button" data-answer-key="structure" data-answer-value="가늘고 흐릿함" data-next-page="q3"><strong>가늘고 흐릿함</strong> 선이 실처럼 가늘거나 흐릿해서 잘 안 보여요.</button>
-        </div>
+    <!-- 🔮 0단계: 인트로 화면 -->
+    <div id="page-intro" class="page active">
+        <h1>👁️ 눈BTI (NoonBTI)</h1>
+        <div class="img-placeholder">눈동자 그래픽</div>
+        <p style="font-weight: bold; font-size: 18px; color: #1e2d1a;">
+            "진짜 당신의 MBTI를 알고 싶나요?<br>단 세 개의 질문으로 눈동자 속 숨겨진 진짜 성격을 찾아드립니다."
+        </p>
+        <button class="btn-main" onclick="nextPage('page-q1')">내 눈BTI 확인하기 (시작)</button>
+    </div>
 
-        <div class="wizard-page" data-page="q3">
-          <h2>3번 질문: 홍채 섬유의 밀도 판단</h2>
-          <div class="wizard-iris guide" aria-hidden="true">가이드 그림 3</div>
-          <p>눈동자의 바탕을 이루는 결, 즉 섬유의 촘촘함을 확인해 보세요.</p>
-          <button class="option-btn" type="button" data-answer-key="density" data-answer-value="치밀함" data-next-page="q4"><strong>치밀함</strong> 실크 천처럼 결이 틈새 없이 촘촘하고 매끄러워요.</button>
-          <button class="option-btn" type="button" data-answer-key="density" data-answer-value="느슨함" data-next-page="q4"><strong>느슨함</strong> 니트나 그물망처럼 섬유 사이에 구멍이나 틈새가 보여요.</button>
-        </div>
+    <!-- 👁️ 1단계 질문: 동공과의 거리 (E/I) -->
+    <div id="page-q1" class="page">
+        <h2>1번 질문: 동공과의 거리 판단</h2>
+        <div class="img-placeholder">가이드 그림 1</div>
+        <p>거울을 보고 눈 중심의 검은 동공과 그 주변을 동그랗게 감싸는 자율신경선(ANW) 사이의 거리를 보세요!</p>
+        <button class="option-btn" onclick="selectOption('distance', '넓음', 'page-q2')">🔘 <strong>넓음</strong> (동공과 선 사이의 간격이 넓고 시원하게 트여 있어요.)</button>
+        <button class="option-btn" onclick="selectOption('distance', '좁음', 'page-q2')">🔘 <strong>좁음</strong> (선이 동공에 바짝 붙어 있어서 좁아 보여요.)</button>
+    </div>
 
-        <div class="wizard-page" data-page="q4">
-          <h2>4번 질문: 스트레스링 개수 판단</h2>
-          <div class="wizard-iris guide" aria-hidden="true">가이드 그림 4</div>
-          <p>홍채 바탕에 나이테처럼 동그랗게 지나가는 스트레스링이 몇 개나 보이는지 세어보세요.</p>
-          <button class="option-btn" type="button" data-answer-key="stressRings" data-answer-value="1" data-next-page="result"><strong>2개 이하</strong> 동심원 선이 없거나 1-2개 정도만 은은하게 보여요.</button>
-          <button class="option-btn" type="button" data-answer-key="stressRings" data-answer-value="4" data-next-page="result"><strong>3개 이상</strong> 동심원 모양의 선이 3개 이상 뚜렷하게 겹쳐 보여요.</button>
-        </div>
+    <!-- ⚡ 2단계 질문: 자율신경선의 구조 (S/N) -->
+    <div id="page-q2" class="page">
+        <h2>2번 질문: 자율신경선의 구조 판단</h2>
+        <div class="img-placeholder">가이드 그림 2</div>
+        <p>동공 주변을 둘러싼 자율신경선 라인의 진하기와 두께를 관찰해 보세요!</p>
+        <button class="option-btn" onclick="selectOption('structure', '굵고 뚜렷함', 'page-q3')">🔘 <strong>굵고 뚜렷함</strong> (선이 밧줄처럼 하얗고 두껍게 눈에 확 띄어요.)</button>
+        <button class="option-btn" onclick="selectOption('structure', '가늘고 흐릿함', 'page-q3')">🔘 <strong>가늘고 흐릿함</strong> (선이 실처럼 아주 가늘거나 흐릿해서 잘 안 보여요.)</button>
+    </div>
 
-        <div class="wizard-page" data-page="result">
-          <h2>당신의 눈BTI 분석 결과</h2>
-          <div class="mbti-result" id="mbtiText">----</div>
-          <p id="resultDesc">눈동자 관찰이 완료되었습니다. 위 알파벳은 네 가지 관찰 기준을 조합한 성향 코드이며, 의학적 진단이나 성격의 절대 판정이 아닙니다.</p>
-          <button class="btn-main" type="button" data-restart-wizard>다시 테스트하기</button>
-        </div>
-      </div>
-      <p class="brand-note">눈비티아이 · NoonBTI</p>
-    </section>
-  </main>
+    <!-- 🕸️ 3단계 질문: 홍채 섬유의 밀도 (T/F) -->
+    <div id="page-q3" class="page">
+        <h2>3번 질문: 홍채 섬유의 밀도 판단</h2>
+        <div class="img-placeholder">가이드 그림 3</div>
+        <p>눈동자의 바탕을 이루는 결(섬유)의 촘촘함을 확인해 보세요!</p>
+        <button class="option-btn" onclick="selectOption('density', '치밀함', 'page-q4')">🔘 <strong>치밀함</strong> (실크 천처럼 결이 틈새 없이 촘촘하고 매끄러워요.)</button>
+        <button class="option-btn" onclick="selectOption('density', '느슨함', 'page-q4')">🔘 <strong>느슨함</strong> (니트나 그물망처럼 섬유 사이에 구멍이나 틈새가 보여요.)</button>
+    </div>
 
-  <script src="./script.js" type="module"></script>
+    <!-- ⭕ 4단계 질문: 스트레스링 개수 (J/P) -->
+    <div id="page-q4" class="page">
+        <h2>4번 질문: 스트레스링 개수 판단</h2>
+        <div class="img-placeholder">가이드 그림 4</div>
+        <p>거울을 깊게 들여다보고, 눈동자(홍채) 바탕에 나이테처럼 동그랗게 결을 그리며 지나가는 '스트레스링'이 몇 개나 보이는지 세어보세요!</p>
+        <button class="option-btn" onclick="selectOption('stressRings', 1, 'page-result')">🔘 <strong>2개 이하</strong> (눈동자에 동심원 선이 없거나 1~2개 정도만 은은하게 보여요.)</button>
+        <button class="option-btn" onclick="selectOption('stressRings', 4, 'page-result')">🔘 <strong>3개 이상</strong> (눈동자에 자잘한 동심원 모양의 선이 3개 이상 뚜렷하게 겹쳐서 보여요.)</button>
+    </div>
+
+    <!-- 🎯 최종 결과 화면 -->
+    <div id="page-result" class="page">
+        <h2>당신의 눈BTI 분석 결과</h2>
+        <div style="font-size: 48px; font-weight: bold; color: #4a6741; margin: 30px 0;" id="mbti-text">----</div>
+        <p id="result-desc">눈동자 연산이 완료되었습니다. 위 알파벳이 당신의 변하지 않는 진짜 성격 기질입니다.</p>
+        <button class="btn-main" onclick="restartTest()">다시 테스트하기</button>
+    </div>
+
+</div>
+
+<script>
+    // 사용자의 선택 값을 저장할 전역 변수 객체
+    let answers = { distance: '', structure: '', density: '', stressRings: 0 };
+
+    // 1. 화면 페이지 전환 함수 (★다음 단계로 안 넘어가는 문제 완벽 해결★)
+    function nextPage(pageId) {
+        // 모든 페이지를 숨김
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+        });
+        // 목적지 페이지 카드만 표시
+        document.getElementById(pageId).classList.add('active');
+
+        // 결과 페이지일 경우 가중치 정밀 연산 실행
+        if(pageId === 'page-result') {
+            showResult();
+        }
+    }
+
+    // 2. 답변 선택 시 데이터를 저장하고 다음 단계로 무조건 전진시키는 함수
+    function selectOption(key, value, nextPageId) {
+        answers[key] = value;
+        nextPage(nextPageId);
+    }
+
+    // 3. 눈BTI 16형 독립 스코어링 마스터 알고리즘
+    function showResult() {
+        let score = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+        // 1대1 매칭 및 25점 배점 독립 연산
+        if (answers.distance === '넓음') score.E += 25;
+        else score.I += 25;
+
+        if (answers.structure === '굵고 뚜렷함') score.S += 25;
+        else score.N += 25;
+
+        if (answers.density === '치밀함') score.T += 25;
+        else score.F += 25;
+
+        if (answers.stressRings >= 3) score.J += 25;
+        else score.P += 25;
+
+        // 최종 문자열 조합
+        let finalMBTI = "";
+        finalMBTI += (score.E >= score.I) ? "E" : "I";
+        finalMBTI += (score.S >= score.N) ? "S" : "N";
+        finalMBTI += (score.T >= score.F) ? "T" : "F";
+        finalMBTI += (score.J >= score.P) ? "J" : "P";
+
+        // 결과 화면에 텍스트 주입
+        document.getElementById('mbti-text').innerText = finalMBTI;
+    }
+
+    // 4. 처음으로 되돌리기 초기화 함수
+    function restartTest() {
+        answers = { distance: '', structure: '', density: '', stressRings: 0 };
+        nextPage('page-intro');
+    }
+</script>
+
 </body>
 </html>

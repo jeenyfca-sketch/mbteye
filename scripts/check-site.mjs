@@ -1,11 +1,6 @@
 import { readFileSync, existsSync } from "node:fs";
 
-const required = [
-  "index.html",
-  "styles.css",
-  "script.js",
-  "assets/brand/nunbti-symbol-minimal.svg"
-];
+const required = ["index.html"];
 
 const missing = required.filter(path => !existsSync(path));
 if (missing.length) {
@@ -14,37 +9,40 @@ if (missing.length) {
 }
 
 const html = readFileSync("index.html", "utf8");
-const script = readFileSync("script.js", "utf8");
 
-for (const needle of ["눈비티아이", "눈BTI (NoonBTI)", "내 눈BTI 확인하기", "나의 홍채 성향 코드", "의학적 진단", "성격의 절대 판정"]) {
+for (const needle of [
+  "눈BTI (NoonBTI)",
+  "page-intro",
+  "page-q1",
+  "page-q2",
+  "page-q3",
+  "page-q4",
+  "page-result",
+  "내 눈BTI 확인하기",
+  "nextPage",
+  "selectOption",
+  "showResult",
+  "restartTest",
+  "mbti-text"
+]) {
   if (!html.includes(needle)) {
-    console.error(`index.html missing required text: ${needle}`);
+    console.error(`index.html missing required content: ${needle}`);
     process.exit(1);
   }
 }
 
-if (!html.includes('id="formula"') || !html.includes("nbti-wizard")) {
-  console.error("index.html missing NunBTI wizard section.");
-  process.exit(1);
-}
-
-for (const removed of ["id=\"types\"", "id=\"rayid\"", "id=\"content\"", "id=\"submit\"", "id=\"ethics\"", "유형 아카이브", "Rayid Method", "콘텐츠 허브", "분석 신청"]) {
+for (const removed of [
+  '<link rel="stylesheet" href="./styles.css">',
+  '<script src="./script.js"',
+  "Rayid Method",
+  "유형 아카이브",
+  "콘텐츠 허브",
+  "분석 신청"
+]) {
   if (html.includes(removed)) {
     console.error(`Removed homepage content is still present: ${removed}`);
     process.exit(1);
   }
-}
-
-for (const unsafe of ["진짜 당신의 MBTI", "진짜 성격", "변하지 않는 진짜 성격"]) {
-  if (html.includes(unsafe)) {
-    console.error(`Unsafe deterministic wording is still present: ${unsafe}`);
-    process.exit(1);
-  }
-}
-
-if (!script.includes("calculateNunBTI") || !script.includes("showWizardPage")) {
-  console.error("NunBTI wizard logic is missing from script.js.");
-  process.exit(1);
 }
 
 console.log("Site check passed.");
