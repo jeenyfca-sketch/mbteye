@@ -55,6 +55,55 @@
         <p>눈BTI 16유형은 네 가지 관찰 지표를 각각 한 글자씩 연결해 만듭니다. 이 기준은 사람을 고정하는 검사가 아니라, 홍채 관찰을 통해 성향과 에너지 반응을 이해하기 위한 콘텐츠형 해석 도구입니다.</p>
       </div>
 
+      <div class="nbti-wizard" aria-label="눈BTI 16유형 확인">
+        <div class="wizard-page active" data-page="intro">
+          <div class="wizard-iris" aria-hidden="true">16</div>
+          <p class="eyebrow">4-step NoonBTI</p>
+          <h3>내 눈BTI 16유형 확인하기</h3>
+          <p>거울로 홍채의 거리, 선, 밀도, 링을 관찰하고 네 글자 눈BTI 코드를 만들어봅니다. 결과는 자기이해를 돕는 콘텐츠형 참고 자료입니다.</p>
+          <button class="button primary" type="button" data-next-page="q1">시작하기</button>
+        </div>
+
+        <div class="wizard-page" data-page="q1">
+          <p class="eyebrow">1 / 4 · E/I</p>
+          <h3>동공과 자율신경선 사이가 어떻게 보이나요?</h3>
+          <p>눈 중심의 검은 동공과 그 주변을 감싸는 자율신경선 사이의 거리를 관찰합니다.</p>
+          <button class="option-btn" type="button" data-answer-key="distance" data-answer-value="넓음" data-next-page="q2"><strong>넓음</strong> 간격이 넓고 시원하게 트여 보여요.</button>
+          <button class="option-btn" type="button" data-answer-key="distance" data-answer-value="좁음" data-next-page="q2"><strong>좁음</strong> 선이 동공에 가까워 좁아 보여요.</button>
+        </div>
+
+        <div class="wizard-page" data-page="q2">
+          <p class="eyebrow">2 / 4 · S/N</p>
+          <h3>자율신경선 라인은 얼마나 뚜렷한가요?</h3>
+          <p>동공 주변을 둘러싼 선의 진하기와 두께를 관찰합니다.</p>
+          <button class="option-btn" type="button" data-answer-key="structure" data-answer-value="굵고 뚜렷함" data-next-page="q3"><strong>굵고 뚜렷함</strong> 선이 두껍고 눈에 잘 띄어요.</button>
+          <button class="option-btn" type="button" data-answer-key="structure" data-answer-value="가늘고 흐릿함" data-next-page="q3"><strong>가늘고 흐릿함</strong> 선이 얇거나 흐려서 잘 안 보여요.</button>
+        </div>
+
+        <div class="wizard-page" data-page="q3">
+          <p class="eyebrow">3 / 4 · T/F</p>
+          <h3>홍채 섬유의 결은 얼마나 촘촘한가요?</h3>
+          <p>눈동자의 바탕을 이루는 결과 틈새를 확인합니다.</p>
+          <button class="option-btn" type="button" data-answer-key="density" data-answer-value="치밀함" data-next-page="q4"><strong>치밀함</strong> 결이 촘촘하고 매끄러워 보여요.</button>
+          <button class="option-btn" type="button" data-answer-key="density" data-answer-value="느슨함" data-next-page="q4"><strong>느슨함</strong> 결 사이의 틈이나 구멍이 보여요.</button>
+        </div>
+
+        <div class="wizard-page" data-page="q4">
+          <p class="eyebrow">4 / 4 · J/P</p>
+          <h3>스트레스링은 몇 개 정도 보이나요?</h3>
+          <p>홍채 바탕에 나이테처럼 지나가는 동심원 모양의 결을 세어봅니다.</p>
+          <button class="option-btn" type="button" data-answer-key="stressRings" data-answer-value="1" data-next-page="result"><strong>2개 이하</strong> 없거나 1-2개 정도만 은은하게 보여요.</button>
+          <button class="option-btn" type="button" data-answer-key="stressRings" data-answer-value="4" data-next-page="result"><strong>3개 이상</strong> 동심원 선이 여러 개 겹쳐 보여요.</button>
+        </div>
+
+        <div class="wizard-page" data-page="result">
+          <p class="eyebrow">눈BTI 분석 결과</p>
+          <div class="mbti-result" id="mbtiText">----</div>
+          <p id="resultDesc">네 가지 관찰 기준을 조합한 눈BTI 코드입니다. 이 결과는 의학적 진단이나 성격의 절대 판정이 아닙니다.</p>
+          <button class="button secondary" type="button" data-restart-wizard>다시 확인하기</button>
+        </div>
+      </div>
+
       <div class="formula-flow" aria-label="눈BTI 16유형 산출 흐름">
         <article>
           <span>1단계 · E/I</span>

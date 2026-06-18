@@ -354,6 +354,80 @@ h3 {
   color: var(--text);
 }
 
+.nbti-wizard {
+  max-width: 760px;
+  margin-bottom: 28px;
+}
+
+.wizard-page {
+  display: none;
+  border: 1px solid rgba(114, 215, 199, 0.3);
+  border-radius: 8px;
+  padding: clamp(22px, 4vw, 34px);
+  background:
+    radial-gradient(circle at 88% 20%, rgba(240, 194, 71, 0.1), transparent 30%),
+    rgba(16, 43, 50, 0.76);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.22);
+}
+
+.wizard-page.active {
+  display: grid;
+  gap: 16px;
+}
+
+.wizard-page h3 {
+  font-size: clamp(24px, 3.2vw, 36px);
+}
+
+.wizard-page p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.wizard-iris {
+  display: grid;
+  width: 132px;
+  height: 132px;
+  place-items: center;
+  border: 3px solid rgba(114, 215, 199, 0.72);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #020507 0 18%, transparent 19%),
+    repeating-conic-gradient(from 8deg, #123940 0 10deg, #72d7c7 11deg 14deg, #f0c247 15deg 17deg, #25414a 18deg 28deg);
+  color: var(--text);
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.option-btn {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px 18px;
+  background: rgba(247, 243, 234, 0.065);
+  color: var(--text);
+  font: inherit;
+  line-height: 1.55;
+  text-align: left;
+  cursor: pointer;
+}
+
+.option-btn:hover {
+  border-color: var(--mint);
+  background: rgba(114, 215, 199, 0.1);
+}
+
+.option-btn strong {
+  color: var(--yellow);
+}
+
+.mbti-result {
+  color: var(--mint);
+  font-size: clamp(54px, 10vw, 96px);
+  font-weight: 900;
+  line-height: 1;
+}
+
 .formula-example {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);

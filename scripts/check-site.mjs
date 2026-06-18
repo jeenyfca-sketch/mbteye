@@ -33,7 +33,7 @@ for (const type of types) {
   }
 }
 
-for (const needle of ["눈비티아이", "16유형 기준 보기", "홍채 관찰 4단계", "의학적 진단", "분석 신청"]) {
+for (const needle of ["눈비티아이", "16유형 기준 보기", "내 눈BTI 16유형 확인하기", "홍채 관찰 4단계", "의학적 진단", "분석 신청"]) {
   if (!html.includes(needle)) {
     console.error(`index.html missing required text: ${needle}`);
     process.exit(1);
@@ -54,6 +54,11 @@ if (html.includes(".example")) {
 
 if (html.includes("자가 관찰로 찾는 눈BTI") || html.includes("내 눈BTI 테스트하기")) {
   console.error("Removed self-observation test copy is still present.");
+  process.exit(1);
+}
+
+if (!script.includes("calculateNunBTI") || !script.includes("showWizardPage")) {
+  console.error("NunBTI wizard logic is missing from script.js.");
   process.exit(1);
 }
 
