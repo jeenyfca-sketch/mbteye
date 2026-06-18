@@ -5,7 +5,6 @@ const required = [
   "styles.css",
   "script.js",
   "data/eye-types.json",
-  "data/test-questions.json",
   "assets/brand/nunbti-symbol-primary.svg",
   "assets/brand/nunbti-symbol-minimal.svg"
 ];
@@ -17,17 +16,11 @@ if (missing.length) {
 }
 
 const types = JSON.parse(readFileSync("data/eye-types.json", "utf8"));
-const questions = JSON.parse(readFileSync("data/test-questions.json", "utf8"));
 const html = readFileSync("index.html", "utf8");
 const script = readFileSync("script.js", "utf8");
 
 if (types.length < 8) {
   console.error("Expected at least 8 eye types.");
-  process.exit(1);
-}
-
-if (questions.length < 6) {
-  console.error("Expected at least 6 test questions.");
   process.exit(1);
 }
 
@@ -40,14 +33,14 @@ for (const type of types) {
   }
 }
 
-for (const needle of ["눈비티아이", "내 눈BTI 테스트하기", "의학적 진단", "분석 신청"]) {
+for (const needle of ["눈비티아이", "16유형 기준 보기", "홍채 관찰 4단계", "의학적 진단", "분석 신청"]) {
   if (!html.includes(needle)) {
     console.error(`index.html missing required text: ${needle}`);
     process.exit(1);
   }
 }
 
-for (const id of ["home", "test", "types", "content", "submit", "ethics"]) {
+for (const id of ["home", "formula", "types", "content", "submit", "ethics"]) {
   if (!html.includes(`id="${id}"`)) {
     console.error(`index.html missing required section id: ${id}`);
     process.exit(1);
@@ -59,21 +52,9 @@ if (html.includes(".example")) {
   process.exit(1);
 }
 
-if (!script.includes("자가 응답") || !script.includes("의학적 진단")) {
-  console.error("Result safety wording is missing from script.js.");
+if (html.includes("자가 관찰로 찾는 눈BTI") || html.includes("내 눈BTI 테스트하기")) {
+  console.error("Removed self-observation test copy is still present.");
   process.exit(1);
-}
-
-const axes = new Set(["edge", "texture", "glow", "depth", "soft"]);
-for (const question of questions) {
-  for (const answer of question.answers) {
-    for (const axis of Object.keys(answer.scores || {})) {
-      if (!axes.has(axis)) {
-        console.error(`Unknown axis in question ${question.id}: ${axis}`);
-        process.exit(1);
-      }
-    }
-  }
 }
 
 const typeAxes = new Set(types.map(type => [...type.axes].sort().join("+")));
