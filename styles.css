@@ -135,6 +135,24 @@ h3 {
   line-height: 1.65;
 }
 
+.hero-formula {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.hero-formula span {
+  border: 1px solid rgba(240, 194, 71, 0.32);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: rgba(240, 194, 71, 0.08);
+  color: var(--yellow);
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
