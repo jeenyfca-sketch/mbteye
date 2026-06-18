@@ -1,27 +1,7 @@
-const typeGrid = document.querySelector("#typeGrid");
 const wizard = document.querySelector(".nbti-wizard");
 const mbtiText = document.querySelector("#mbtiText");
 
-let eyeTypes = [];
 let answers = { distance: "", structure: "", density: "", stressRings: 0 };
-
-async function loadData() {
-  const typesRes = await fetch("./data/eye-types.json");
-  eyeTypes = await typesRes.json();
-}
-
-function renderTypes() {
-  if (!typeGrid) return;
-
-  typeGrid.innerHTML = eyeTypes.map(type => `
-    <article class="type-card" id="type-${type.slug}">
-      <strong>${type.name}</strong>
-      <h3>${type.summary}</h3>
-      <p>${type.description}</p>
-      <div class="keywords">${type.keywords.map(keyword => `<span>${keyword}</span>`).join("")}</div>
-    </article>
-  `).join("");
-}
 
 function showWizardPage(pageName) {
   if (!wizard) return;
@@ -94,5 +74,3 @@ if (wizard) {
     showWizardPage(nextButton.dataset.nextPage);
   });
 }
-
-loadData().then(renderTypes);
