@@ -73,15 +73,22 @@ main,
   width: 100%;
 }
 
+main {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
   max-width: 640px;
-  padding: 96px 20px 40px;
+  padding: 20px;
   text-align: center;
 }
 
 .wizard-page {
   display: none;
-  margin-top: 20px;
+  margin-top: 0;
   border: 1px solid rgba(74, 103, 65, 0.1);
   border-radius: 12px;
   padding: clamp(30px, 6vw, 42px) clamp(20px, 5vw, 32px);
@@ -237,21 +244,8 @@ p {
     align-items: flex-start;
   }
 
-  .site-header {
-    padding: 10px 16px;
-  }
-
-  .brand img {
-    width: 30px;
-    height: 30px;
-  }
-
-  .nav {
-    font-size: 14px;
-  }
-
   .container {
-    padding-top: 76px;
+    padding: 16px;
   }
 
   .btn-main,
