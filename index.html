@@ -251,6 +251,64 @@
       line-height: 1.65;
     }
 
+    .type-detail {
+      max-width: 560px;
+      margin: 22px auto 0;
+      padding: 18px;
+      border: 1px solid rgba(124, 199, 255, 0.22);
+      border-radius: 10px;
+      background: rgba(13, 27, 42, 0.56);
+      text-align: left;
+    }
+
+    .type-kicker {
+      margin: 0 0 8px;
+      color: var(--accent-2);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .type-detail h3 {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font-size: 23px;
+      line-height: 1.35;
+    }
+
+    .type-detail p {
+      max-width: none;
+      font-size: 15px;
+    }
+
+    .type-facts {
+      display: grid;
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    .type-fact {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: rgba(65, 90, 119, 0.28);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .type-fact strong {
+      color: var(--blue);
+    }
+
+    .type-note {
+      padding-top: 12px;
+      border-top: 1px solid rgba(224, 225, 221, 0.12);
+      color: rgba(224, 225, 221, 0.78);
+      font-size: 14px !important;
+    }
+
     .reset-button {
       margin-top: 28px;
       padding: 13px 26px;
@@ -287,6 +345,10 @@
 
       .choice {
         min-height: auto;
+      }
+
+      .type-fact {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -461,7 +523,26 @@
       <section class="result" id="eye-result-screen" aria-live="polite">
         <h2>나의 눈 분석 결과</h2>
         <div class="mbti-result" id="eye-mbti-text">----</div>
-        <p>재미있게 비교해 보셨나요? 친구들과 결과를 공유해 보세요.</p>
+        <article class="type-detail" id="eye-type-detail">
+          <p class="type-kicker">옵시디언 유형 노트 기반</p>
+          <h3 id="eye-type-title">유형 설명</h3>
+          <p id="eye-type-summary">결과 유형에 맞는 설명이 표시됩니다.</p>
+          <div class="type-facts" aria-label="유형별 세부 설명">
+            <div class="type-fact">
+              <strong>홍채 밀도</strong>
+              <span id="eye-type-density">-</span>
+            </div>
+            <div class="type-fact">
+              <strong>신경계 기질</strong>
+              <span id="eye-type-ans">-</span>
+            </div>
+            <div class="type-fact">
+              <strong>성향 키워드</strong>
+              <span id="eye-type-keywords">-</span>
+            </div>
+          </div>
+          <p class="type-note">눈BTI는 의학적 진단이나 성격의 절대 판정이 아니라, 눈의 인상을 바탕으로 자신을 재미있게 이해하는 관찰형 콘텐츠입니다.</p>
+        </article>
         <button class="reset-button" type="button" onclick="resetEyeTest()">다시 확인하기</button>
       </section>
     </div>
@@ -470,6 +551,120 @@
   <script>
     (function () {
       var result = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+      var typeDescriptions = {
+        INTJ: {
+          title: "INTJ 통제형 인사이트 아이",
+          summary: "빈틈을 줄이고 전체 구조를 먼저 잡으려는 성향이 강합니다. 조용하지만 기준이 분명하고, 깊이 생각한 뒤 움직이는 타입으로 볼 수 있습니다.",
+          density: "최고로 치밀함 / 촘촘함",
+          ans: "강력한 교감신경 긴장",
+          keywords: "전략, 통제, 집중, 완성도"
+        },
+        ISTJ: {
+          title: "ISTJ 규칙형 스테디 아이",
+          summary: "익숙한 기준과 순서를 중시하며, 맡은 일을 안정적으로 끝까지 밀고 가는 성향입니다. 차분하고 신뢰감 있는 분위기가 강하게 나타납니다.",
+          density: "매우 치밀함 / 빽빽함",
+          ans: "교감신경 상진",
+          keywords: "책임감, 규칙, 안정, 신뢰"
+        },
+        INFJ: {
+          title: "INFJ 통찰형 미스틱 아이",
+          summary: "겉으로는 조용하지만 사람과 상황의 흐름을 깊게 읽으려는 성향입니다. 의미와 방향을 중요하게 여기며, 내면의 기준이 섬세합니다.",
+          density: "매우 치밀함 / 빽빽함",
+          ans: "교감신경 상진",
+          keywords: "통찰, 의미, 몰입, 섬세함"
+        },
+        ISFJ: {
+          title: "ISFJ 안정형 케어 아이",
+          summary: "주변을 세심하게 살피고 익숙한 사람과 환경을 안정적으로 지키려는 성향입니다. 조용한 배려와 꾸준함이 강점입니다.",
+          density: "치밀함 / 촘촘함",
+          ans: "교감신경 우세",
+          keywords: "배려, 보호, 안정, 성실"
+        },
+        INTP: {
+          title: "INTP 분석형 쿨로직 아이",
+          summary: "감정보다 원리와 구조를 먼저 파악하려는 성향입니다. 혼자 생각을 정리하며 새로운 관점을 만드는 데 강합니다.",
+          density: "약간 치밀함",
+          ans: "교감신경 성향 우세",
+          keywords: "분석, 논리, 탐구, 독립성"
+        },
+        ISTP: {
+          title: "ISTP 적응형 리얼리스트 아이",
+          summary: "상황을 빠르게 읽고 필요한 만큼만 움직이는 실전형 성향입니다. 말보다 관찰과 행동으로 문제를 해결하려는 흐름이 있습니다.",
+          density: "치밀/느슨 균형",
+          ans: "자율신경 균형",
+          keywords: "실전, 관찰, 적응, 효율"
+        },
+        INFP: {
+          title: "INFP 이상형 소프트 아이",
+          summary: "자신만의 가치와 감성을 지키려는 성향입니다. 부드럽지만 내면의 기준이 있고, 진정성 있는 관계에서 힘을 얻습니다.",
+          density: "치밀/느슨 균형",
+          ans: "자율신경 균형",
+          keywords: "가치, 상상, 진정성, 감수성"
+        },
+        ISFP: {
+          title: "ISFP 예술형 무드 아이",
+          summary: "강한 주장보다 자연스러운 감각과 분위기를 중요하게 여기는 성향입니다. 편안한 환경에서 개성과 표현력이 살아납니다.",
+          density: "약간 느슨함",
+          ans: "부교감신경 성향 우세",
+          keywords: "감각, 표현, 자유, 섬세함"
+        },
+        ENTJ: {
+          title: "ENTJ 추진형 리더 아이",
+          summary: "목표를 정하면 방향을 빠르게 잡고 사람과 자원을 움직이려는 성향입니다. 결단력과 추진력이 눈에 띄는 타입입니다.",
+          density: "약간 치밀함",
+          ans: "교감신경 성향 우세",
+          keywords: "목표, 추진, 리더십, 결단"
+        },
+        ESTJ: {
+          title: "ESTJ 관리형 오거나이저 아이",
+          summary: "현실적인 기준으로 일을 정리하고 실행하는 성향입니다. 흐트러진 상황을 구조화하고 책임 있게 관리하는 힘이 있습니다.",
+          density: "치밀/느슨 균형",
+          ans: "자율신경 균형",
+          keywords: "관리, 실행, 기준, 책임"
+        },
+        ENFJ: {
+          title: "ENFJ 교육형 하모니 아이",
+          summary: "사람의 가능성을 보고 이끌어 주려는 성향입니다. 관계 속에서 에너지를 얻고, 분위기를 따뜻하게 조율하는 힘이 있습니다.",
+          density: "치밀/느슨 균형",
+          ans: "자율신경 균형",
+          keywords: "공감, 교육, 조율, 관계"
+        },
+        ESFJ: {
+          title: "ESFJ 사교형 케어 아이",
+          summary: "사람들과의 연결과 분위기를 중요하게 여기는 성향입니다. 주변을 챙기고 함께 안정감을 만드는 데 강합니다.",
+          density: "약간 느슨함",
+          ans: "부교감신경 성향 우세",
+          keywords: "사교, 배려, 협력, 안정"
+        },
+        ENTP: {
+          title: "ENTP 탐구형 스파크 아이",
+          summary: "새로운 아이디어와 가능성을 빠르게 발견하는 성향입니다. 고정된 방식보다 실험과 토론 속에서 에너지가 살아납니다.",
+          density: "느슨함 / 여유 있음",
+          ans: "부교감신경 우세",
+          keywords: "아이디어, 탐구, 토론, 유연성"
+        },
+        ESTP: {
+          title: "ESTP 활동형 에너지 아이",
+          summary: "생각보다 경험을 통해 빠르게 배우는 성향입니다. 현장감, 순발력, 즉각적인 반응이 강하게 나타납니다.",
+          density: "매우 느슨함 / 성김",
+          ans: "부교감신경 강세",
+          keywords: "활동, 순발력, 경험, 현실감"
+        },
+        ENFP: {
+          title: "ENFP 열정형 큐리어스 아이",
+          summary: "가능성과 사람에게 열린 에너지가 큰 성향입니다. 새로운 만남과 아이디어 속에서 활기가 커지고, 분위기를 밝게 만듭니다.",
+          density: "매우 느슨함 / 성김",
+          ans: "부교감신경 강세",
+          keywords: "열정, 호기심, 가능성, 자유"
+        },
+        ESFP: {
+          title: "ESFP 자유형 클리어에너지 아이",
+          summary: "지금 이 순간의 감각과 즐거움을 잘 포착하는 성향입니다. 표현이 자연스럽고 주변에 생동감을 주는 타입입니다.",
+          density: "최고로 느슨함 / 성김",
+          ans: "강력한 부교감신경 이완",
+          keywords: "자유, 표현, 생동감, 즐거움"
+        }
+      };
 
       function showStep(step) {
         document.querySelectorAll(".step").forEach(function (section) {
@@ -502,7 +697,21 @@
           (result.J ? "J" : "P");
 
         document.getElementById("eye-mbti-text").innerText = finalMbti;
+        renderTypeDescription(finalMbti);
         document.getElementById("eye-result-screen").classList.add("active");
+      }
+
+      function renderTypeDescription(type) {
+        var description = typeDescriptions[type];
+        if (!description) {
+          return;
+        }
+
+        document.getElementById("eye-type-title").innerText = description.title;
+        document.getElementById("eye-type-summary").innerText = description.summary;
+        document.getElementById("eye-type-density").innerText = description.density;
+        document.getElementById("eye-type-ans").innerText = description.ans;
+        document.getElementById("eye-type-keywords").innerText = description.keywords;
       }
 
       window.resetEyeTest = function () {
