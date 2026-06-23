@@ -10,10 +10,14 @@ const html = readFileSync("index.html", "utf8");
 for (const needle of [
   "눈으로 보는 MBTI",
   "필수 가이드",
-  "동공의 크기",
-  "자율신경선의 굵기",
-  "동공 바깥쪽 마감 형태",
-  "과녁 모양 나이테 주름",
+  "eye-step1",
+  "eye-step2",
+  "eye-step3",
+  "eye-step4",
+  "goNext",
+  "resetEyeTest",
+  "eye-result-screen",
+  "eye-mbti-text",
   "E형 선택",
   "I형 선택",
   "S형 선택",
@@ -29,24 +33,17 @@ for (const needle of [
   }
 }
 
-for (const removed of [
+for (const broken of [
+  "style.style",
+  "?뉰",
+  "?덈룞",
   "page-intro",
-  "page-q1",
-  "page-q2",
-  "page-q3",
-  "page-q4",
-  "page-result",
-  "nextPage",
-  "selectOption",
-  "showResult",
-  "restartTest",
-  "mbti-text",
-  "Rayid Method",
-  "styles.css",
-  "script.js"
+  'id="mbti-text"',
+  "script.js",
+  "styles.css"
 ]) {
-  if (html.includes(removed)) {
-    console.error(`Old homepage content is still present: ${removed}`);
+  if (html.includes(broken)) {
+    console.error(`Broken or old homepage content is still present: ${broken}`);
     process.exit(1);
   }
 }

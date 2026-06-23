@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" role="img" aria-label="large pupil guide">
+  <rect width="480" height="360" fill="#f5f3ee"/>
+  <ellipse cx="240" cy="180" rx="180" ry="96" fill="#fff" stroke="#4a6741" stroke-width="10"/>
+  <circle cx="240" cy="180" r="92" fill="#72d7c7"/>
+  <circle cx="240" cy="180" r="58" fill="#061013"/>
+  <circle cx="216" cy="150" r="14" fill="#fff" opacity=".9"/>
+  <text x="240" y="326" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#e53935">E large pupil</text>
+</svg>

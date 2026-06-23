@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" role="img" aria-label="bumpy pupil edge guide">
+  <rect width="480" height="360" fill="#f5f3ee"/>
+  <ellipse cx="240" cy="180" rx="180" ry="96" fill="#fff" stroke="#4a6741" stroke-width="10"/>
+  <circle cx="240" cy="180" r="94" fill="#72d7c7"/>
+  <circle cx="240" cy="180" r="46" fill="#061013"/>
+  <circle cx="202" cy="156" r="18" fill="#061013"/>
+  <circle cx="284" cy="156" r="16" fill="#061013"/>
+  <circle cx="272" cy="216" r="15" fill="#061013"/>
+  <text x="240" y="326" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#e53935">F bumpy edge</text>
+</svg>

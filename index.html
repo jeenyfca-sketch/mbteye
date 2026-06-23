@@ -9,13 +9,14 @@
       --bg: #081418;
       --panel: #ffffff;
       --ink: #1d2729;
-      --muted: #5c6a6d;
+      --muted: #617073;
+      --soft: #f5f3ee;
+      --line: #d8ded8;
       --green: #4a6741;
       --green-dark: #2e4427;
-      --line: #d8ded8;
-      --soft: #f5f3ee;
-      --mint: #72d7c7;
       --gold: #f0c247;
+      --blue: #1e88e5;
+      --red: #e53935;
     }
 
     * {
@@ -23,6 +24,7 @@
     }
 
     body {
+      min-height: 100vh;
       margin: 0;
       font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
       background:
@@ -30,131 +32,196 @@
         radial-gradient(circle at 80% 70%, rgba(240, 194, 71, 0.14), transparent 28%),
         var(--bg);
       color: var(--ink);
-      min-height: 100vh;
     }
 
     main {
-      width: min(920px, 100%);
+      width: min(720px, 100%);
       margin: 0 auto;
-      padding: 34px 18px 52px;
+      padding: 28px 16px 48px;
     }
 
-    .hero,
-    .guide,
-    .step-card {
+    .app-shell {
       background: var(--panel);
       border-radius: 12px;
-      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 18px 54px rgba(0, 0, 0, 0.22);
+      overflow: hidden;
     }
 
-    .hero {
-      padding: 30px 24px;
+    .header {
+      padding: 28px 24px 22px;
       text-align: center;
+      border-bottom: 1px solid var(--line);
     }
 
     h1 {
+      margin: 0 0 8px;
       color: var(--green-dark);
-      font-size: clamp(26px, 5vw, 42px);
-      margin: 0 0 12px;
+      font-size: clamp(25px, 6vw, 38px);
       letter-spacing: 0;
+      line-height: 1.25;
     }
 
     .subtitle {
+      margin: 0 0 18px;
       color: var(--muted);
-      font-size: 18px;
-      line-height: 1.65;
-      margin: 0;
+      font-size: 17px;
       font-weight: 700;
+      line-height: 1.55;
     }
 
     .guide {
-      margin-top: 18px;
-      padding: 22px 24px;
-      border-left: 6px solid var(--gold);
-    }
-
-    .guide h2,
-    .step-card h2 {
-      margin: 0 0 12px;
-      color: var(--green-dark);
-      font-size: 21px;
-      line-height: 1.35;
-      letter-spacing: 0;
-    }
-
-    .guide p,
-    .step-card p {
       margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.7;
+      padding: 16px;
+      border-left: 5px solid var(--gold);
+      border-radius: 8px;
+      background: #fffde7;
+      color: #4f5144;
+      text-align: left;
+      font-size: 15px;
+      line-height: 1.65;
     }
 
-    .steps {
-      display: grid;
-      gap: 18px;
-      margin-top: 18px;
+    .progress {
+      color: #8a9497;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 10px;
     }
 
-    .step-card {
-      padding: 24px;
+    .step,
+    .result {
+      display: none;
+      padding: 26px 22px 28px;
+    }
+
+    .step.active,
+    .result.active {
+      display: block;
+    }
+
+    .step h2,
+    .result h2 {
+      margin: 0 0 22px;
+      color: var(--green-dark);
+      font-size: 22px;
+      line-height: 1.38;
+      text-align: center;
+      letter-spacing: 0;
     }
 
     .choices {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
-      margin-top: 18px;
     }
 
     .choice {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      min-height: 260px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
+      min-height: 350px;
+      padding: 16px;
+      border: 2px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+      font: inherit;
+      color: inherit;
+    }
+
+    .choice:hover,
+    .choice:focus-visible {
+      border-color: var(--green);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(8, 20, 24, 0.12);
+      outline: none;
+    }
+
+    .choice img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 7px;
+      margin-bottom: 15px;
       background: var(--soft);
     }
 
-    .choice strong {
-      display: block;
-      color: var(--green-dark);
-      font-size: 19px;
-      line-height: 1.45;
+    .choice-title {
+      margin-bottom: 8px;
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.4;
     }
 
-    .choice .label {
+    .choice-title.red {
+      color: var(--red);
+    }
+
+    .choice-title.blue {
+      color: var(--blue);
+    }
+
+    .choice-title.green {
       color: var(--green);
+    }
+
+    .choice p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .result {
+      text-align: center;
+    }
+
+    .mbti-result {
+      margin: 16px auto;
+      color: var(--blue);
+      font-size: clamp(48px, 16vw, 82px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .result p {
+      margin: 0 auto;
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .reset-button {
+      margin-top: 28px;
+      padding: 13px 26px;
+      border: 0;
+      border-radius: 7px;
+      background: #222;
+      color: #fff;
+      cursor: pointer;
+      font: inherit;
       font-weight: 800;
     }
 
-    .image-slot {
-      display: grid;
-      place-items: center;
-      min-height: 112px;
-      margin-top: auto;
-      padding: 16px;
-      border: 2px dashed rgba(74, 103, 65, 0.38);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.68);
-      color: #71806b;
-      font-size: 14px;
-      line-height: 1.5;
-      text-align: center;
-      font-weight: 700;
+    .reset-button:hover,
+    .reset-button:focus-visible {
+      background: var(--green-dark);
+      outline: none;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 680px) {
       main {
-        padding: 20px 14px 36px;
+        padding: 16px 12px 34px;
       }
 
-      .hero,
-      .guide,
-      .step-card {
-        border-radius: 10px;
+      .header,
+      .step,
+      .result {
+        padding-left: 16px;
+        padding-right: 16px;
       }
 
       .choices {
@@ -169,81 +236,138 @@
 </head>
 <body>
   <main>
-    <section class="hero">
-      <h1>👀 눈으로 보는 MBTI</h1>
-      <p class="subtitle">재미있게 비교해 보세요</p>
-    </section>
+    <div class="app-shell" id="eyebti-container">
+      <header class="header" id="eye-header">
+        <h1>👀 눈으로 보는 MBTI</h1>
+        <p class="subtitle">재미있게 비교해 보세요</p>
+        <p class="guide">
+          <strong>필수 가이드</strong><br>
+          눈 확인하는 법: 거울을 정면으로 보고 핸드폰 플래시를 눈 측면에서 비춘 상태에서 눈동자를 확인해 주세요.
+        </p>
+      </header>
 
-    <section class="guide" aria-labelledby="guide-title">
-      <h2 id="guide-title">💡 필수 가이드</h2>
-      <p>눈 확인하는 법: 거울을 정면으로 보고 핸드폰 플래시를 눈 측면에서 비춘 상태에서 눈동자를 확인해 주세요.</p>
-    </section>
-
-    <section class="steps" aria-label="눈으로 보는 MBTI 4단계">
-      <article class="step-card">
-        <h2>1번 단계. E(외향) vs I(내향) ── 동공의 크기</h2>
+      <section class="step active" id="eye-step1" data-step="1">
+        <div class="progress">1 / 4</div>
+        <h2>1. 내 눈동자의 동공 크기는 어떤가요?</h2>
         <div class="choices">
-          <div class="choice">
-            <strong><span class="label">E형 선택</span> ➡️ “동공이 크다”</strong>
+          <button class="choice" type="button" onclick="goNext(1, 'E')">
+            <img src="./assets/eye-guide/e-large-pupil.svg" alt="동공이 큰 눈 예시">
+            <span class="choice-title red">E형 선택: 동공이 크다</span>
             <p>눈동자의 동공(검은자)이 시원하게 열려 있고 큰 편이다.</p>
-            <div class="image-slot">📷 여기에 동공 확장 이미지 첨부</div>
-          </div>
-          <div class="choice">
-            <strong><span class="label">I형 선택</span> ➡️ “동공이 작다”</strong>
+          </button>
+          <button class="choice" type="button" onclick="goNext(1, 'I')">
+            <img src="./assets/eye-guide/i-small-pupil.svg" alt="동공이 작은 눈 예시">
+            <span class="choice-title blue">I형 선택: 동공이 작다</span>
             <p>눈동자의 동공(검은자)이 수축되어 있고 작은 편이다.</p>
-            <div class="image-slot">📷 여기에 동공 축소 이미지 첨부</div>
-          </div>
+          </button>
         </div>
-      </article>
+      </section>
 
-      <article class="step-card">
-        <h2>2번 단계. S(감각) vs N(직관) ── 자율신경선의 굵기</h2>
+      <section class="step" id="eye-step2" data-step="2">
+        <div class="progress">2 / 4</div>
+        <h2>2. 동공 주변 자율신경선의 굵기는 어떤가요?</h2>
         <div class="choices">
-          <div class="choice">
-            <strong><span class="label">S형 선택</span> ➡️ “밧줄처럼 두꺼운 링 선”</strong>
+          <button class="choice" type="button" onclick="goNext(2, 'S')">
+            <img src="./assets/eye-guide/s-thick-ring.svg" alt="굵고 선명한 자율신경선 예시">
+            <span class="choice-title green">S형 선택: 밧줄처럼 두꺼운 링 선</span>
             <p>동공 주변을 감싸는 원형 테두리 선(자율신경선)이 굵고 선명하다.</p>
-            <div class="image-slot">📷 여기에 두터운 밧줄 모양 링 선 이미지 첨부</div>
-          </div>
-          <div class="choice">
-            <strong><span class="label">N형 선택</span> ➡️ “실낱처럼 가느다란 실선”</strong>
+          </button>
+          <button class="choice" type="button" onclick="goNext(2, 'N')">
+            <img src="./assets/eye-guide/n-thin-ring.svg" alt="가느다란 자율신경선 예시">
+            <span class="choice-title blue">N형 선택: 실낱처럼 가느다란 실선</span>
             <p>동공 주변을 감싸는 원형 테두리 선(자율신경선)이 아주 가늘거나 거의 안 보인다.</p>
-            <div class="image-slot">📷 여기에 미세한 실선 이미지 첨부</div>
-          </div>
+          </button>
         </div>
-      </article>
+      </section>
 
-      <article class="step-card">
-        <h2>3번 단계. T(사고) vs F(감정) ── 동공 바깥쪽 마감 형태</h2>
+      <section class="step" id="eye-step3" data-step="3">
+        <div class="progress">3 / 4</div>
+        <h2>3. 동공 바깥쪽 경계선은 어떤 모양인가요?</h2>
         <div class="choices">
-          <div class="choice">
-            <strong><span class="label">T형 선택</span> ➡️ “매끄러운 원형 테두리”</strong>
+          <button class="choice" type="button" onclick="goNext(3, 'T')">
+            <img src="./assets/eye-guide/t-smooth-edge.svg" alt="매끄러운 원형 테두리 예시">
+            <span class="choice-title blue">T형 선택: 매끄러운 원형 테두리</span>
             <p>동공의 바깥쪽 경계선이 매끄럽고 깨끗한 원을 그린다.</p>
-            <div class="image-slot">📷 여기에 깨끗한 원형 동공 이미지 첨부</div>
-          </div>
-          <div class="choice">
-            <strong><span class="label">F형 선택</span> ➡️ “몽글몽글한 포도송이형 테두리”</strong>
+          </button>
+          <button class="choice" type="button" onclick="goNext(3, 'F')">
+            <img src="./assets/eye-guide/f-bumpy-edge.svg" alt="몽글몽글한 테두리 예시">
+            <span class="choice-title red">F형 선택: 몽글몽글한 포도송이형 테두리</span>
             <p>동공의 바깥쪽 경계선 중 어느 한 곳이라도 포도송이처럼 몽글몽글하게 부푼 모양이 있다.</p>
-            <div class="image-slot">📷 여기에 부푼 포도송이형 동공 이미지 첨부</div>
-          </div>
+          </button>
         </div>
-      </article>
+      </section>
 
-      <article class="step-card">
-        <h2>4번 단계. J(판단) vs P(인식) ── 과녁 모양 나이테 주름</h2>
+      <section class="step" id="eye-step4" data-step="4">
+        <div class="progress">4 / 4</div>
+        <h2>4. 눈동자 바탕에 과녁 모양 나이테 주름이 보이나요?</h2>
         <div class="choices">
-          <div class="choice">
-            <strong><span class="label">J형 선택</span> ➡️ “나이테 주름이 있음”</strong>
+          <button class="choice" type="button" onclick="goNext(4, 'J')">
+            <img src="./assets/eye-guide/j-rings.svg" alt="나이테 주름이 있는 홍채 예시">
+            <span class="choice-title red">J형 선택: 나이테 주름이 있음</span>
             <p>눈동자 바탕에 과녁 모양처럼 둥글게 패인 주름선이 1개 이상 보인다.</p>
-            <div class="image-slot">📷 여기에 동심원 주름선 이미지 첨부</div>
-          </div>
-          <div class="choice">
-            <strong><span class="label">P형 선택</span> ➡️ “나이테 주름이 없음”</strong>
+          </button>
+          <button class="choice" type="button" onclick="goNext(4, 'P')">
+            <img src="./assets/eye-guide/p-no-rings.svg" alt="주름이 거의 없는 홍채 예시">
+            <span class="choice-title blue">P형 선택: 나이테 주름이 없음</span>
             <p>눈동자 바탕에 둥글게 패인 주름선이 없거나 거의 보이지 않고 매끈하다.</p>
-            <div class="image-slot">📷 여기에 주름 없는 평온한 홍채 이미지 첨부</div>
-          </div>
+          </button>
         </div>
-      </article>
-    </section>
+      </section>
+
+      <section class="result" id="eye-result-screen" aria-live="polite">
+        <h2>나의 눈 분석 결과</h2>
+        <div class="mbti-result" id="eye-mbti-text">----</div>
+        <p>재미있게 비교해 보셨나요? 친구들과 결과를 공유해 보세요.</p>
+        <button class="reset-button" type="button" onclick="resetEyeTest()">다시 확인하기</button>
+      </section>
+    </div>
   </main>
+
+  <script>
+    (function () {
+      var result = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+      function showStep(step) {
+        document.querySelectorAll(".step").forEach(function (section) {
+          section.classList.remove("active");
+        });
+        document.getElementById("eye-step" + step).classList.add("active");
+      }
+
+      window.goNext = function (step, value) {
+        result[value] = 1;
+
+        if (step < 4) {
+          showStep(step + 1);
+          return;
+        }
+
+        showFinal();
+      };
+
+      function showFinal() {
+        document.getElementById("eye-header").style.display = "none";
+        document.querySelectorAll(".step").forEach(function (section) {
+          section.classList.remove("active");
+        });
+
+        var finalMbti =
+          (result.E ? "E" : "I") +
+          (result.S ? "S" : "N") +
+          (result.T ? "T" : "F") +
+          (result.J ? "J" : "P");
+
+        document.getElementById("eye-mbti-text").innerText = finalMbti;
+        document.getElementById("eye-result-screen").classList.add("active");
+      }
+
+      window.resetEyeTest = function () {
+        result = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+        document.getElementById("eye-header").style.display = "block";
+        document.getElementById("eye-result-screen").classList.remove("active");
+        showStep(1);
+      };
+    })();
+  </script>
 </body>
 </html>
