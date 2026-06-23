@@ -18,6 +18,7 @@ for (const needle of [
   "resetEyeTest",
   "eye-result-screen",
   "eye-mbti-text",
+  "eye-graphic",
   "E형 선택",
   "I형 선택",
   "S형 선택",
@@ -35,6 +36,10 @@ for (const needle of [
 
 for (const broken of [
   "style.style",
+  "<img",
+  "data-fallback",
+  "images.unsplash.com",
+  "upload.wikimedia.org",
   "?뉰",
   "?덈룞",
   "page-intro",
