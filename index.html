@@ -3,16 +3,247 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NunBTI</title>
+  <title>눈으로 보는 MBTI</title>
   <style>
-    html,
+    :root {
+      --bg: #081418;
+      --panel: #ffffff;
+      --ink: #1d2729;
+      --muted: #5c6a6d;
+      --green: #4a6741;
+      --green-dark: #2e4427;
+      --line: #d8ded8;
+      --soft: #f5f3ee;
+      --mint: #72d7c7;
+      --gold: #f0c247;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      min-height: 100%;
       margin: 0;
-      background: #081418;
+      font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+      background:
+        radial-gradient(circle at 20% 22%, rgba(114, 215, 199, 0.18), transparent 34%),
+        radial-gradient(circle at 80% 70%, rgba(240, 194, 71, 0.14), transparent 28%),
+        var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    main {
+      width: min(920px, 100%);
+      margin: 0 auto;
+      padding: 34px 18px 52px;
+    }
+
+    .hero,
+    .guide,
+    .step-card {
+      background: var(--panel);
+      border-radius: 12px;
+      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.18);
+    }
+
+    .hero {
+      padding: 30px 24px;
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--green-dark);
+      font-size: clamp(26px, 5vw, 42px);
+      margin: 0 0 12px;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.65;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .guide {
+      margin-top: 18px;
+      padding: 22px 24px;
+      border-left: 6px solid var(--gold);
+    }
+
+    .guide h2,
+    .step-card h2 {
+      margin: 0 0 12px;
+      color: var(--green-dark);
+      font-size: 21px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .guide p,
+    .step-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .steps {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .step-card {
+      padding: 24px;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .choice {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 260px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .choice strong {
+      display: block;
+      color: var(--green-dark);
+      font-size: 19px;
+      line-height: 1.45;
+    }
+
+    .choice .label {
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .image-slot {
+      display: grid;
+      place-items: center;
+      min-height: 112px;
+      margin-top: auto;
+      padding: 16px;
+      border: 2px dashed rgba(74, 103, 65, 0.38);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.68);
+      color: #71806b;
+      font-size: 14px;
+      line-height: 1.5;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    @media (max-width: 720px) {
+      main {
+        padding: 20px 14px 36px;
+      }
+
+      .hero,
+      .guide,
+      .step-card {
+        border-radius: 10px;
+      }
+
+      .choices {
+        grid-template-columns: 1fr;
+      }
+
+      .choice {
+        min-height: auto;
+      }
     }
   </style>
 </head>
 <body>
+  <main>
+    <section class="hero">
+      <h1>👀 눈으로 보는 MBTI</h1>
+      <p class="subtitle">재미있게 비교해 보세요</p>
+    </section>
+
+    <section class="guide" aria-labelledby="guide-title">
+      <h2 id="guide-title">💡 필수 가이드</h2>
+      <p>눈 확인하는 법: 거울을 정면으로 보고 핸드폰 플래시를 눈 측면에서 비춘 상태에서 눈동자를 확인해 주세요.</p>
+    </section>
+
+    <section class="steps" aria-label="눈으로 보는 MBTI 4단계">
+      <article class="step-card">
+        <h2>1번 단계. E(외향) vs I(내향) ── 동공의 크기</h2>
+        <div class="choices">
+          <div class="choice">
+            <strong><span class="label">E형 선택</span> ➡️ “동공이 크다”</strong>
+            <p>눈동자의 동공(검은자)이 시원하게 열려 있고 큰 편이다.</p>
+            <div class="image-slot">📷 여기에 동공 확장 이미지 첨부</div>
+          </div>
+          <div class="choice">
+            <strong><span class="label">I형 선택</span> ➡️ “동공이 작다”</strong>
+            <p>눈동자의 동공(검은자)이 수축되어 있고 작은 편이다.</p>
+            <div class="image-slot">📷 여기에 동공 축소 이미지 첨부</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="step-card">
+        <h2>2번 단계. S(감각) vs N(직관) ── 자율신경선의 굵기</h2>
+        <div class="choices">
+          <div class="choice">
+            <strong><span class="label">S형 선택</span> ➡️ “밧줄처럼 두꺼운 링 선”</strong>
+            <p>동공 주변을 감싸는 원형 테두리 선(자율신경선)이 굵고 선명하다.</p>
+            <div class="image-slot">📷 여기에 두터운 밧줄 모양 링 선 이미지 첨부</div>
+          </div>
+          <div class="choice">
+            <strong><span class="label">N형 선택</span> ➡️ “실낱처럼 가느다란 실선”</strong>
+            <p>동공 주변을 감싸는 원형 테두리 선(자율신경선)이 아주 가늘거나 거의 안 보인다.</p>
+            <div class="image-slot">📷 여기에 미세한 실선 이미지 첨부</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="step-card">
+        <h2>3번 단계. T(사고) vs F(감정) ── 동공 바깥쪽 마감 형태</h2>
+        <div class="choices">
+          <div class="choice">
+            <strong><span class="label">T형 선택</span> ➡️ “매끄러운 원형 테두리”</strong>
+            <p>동공의 바깥쪽 경계선이 매끄럽고 깨끗한 원을 그린다.</p>
+            <div class="image-slot">📷 여기에 깨끗한 원형 동공 이미지 첨부</div>
+          </div>
+          <div class="choice">
+            <strong><span class="label">F형 선택</span> ➡️ “몽글몽글한 포도송이형 테두리”</strong>
+            <p>동공의 바깥쪽 경계선 중 어느 한 곳이라도 포도송이처럼 몽글몽글하게 부푼 모양이 있다.</p>
+            <div class="image-slot">📷 여기에 부푼 포도송이형 동공 이미지 첨부</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="step-card">
+        <h2>4번 단계. J(판단) vs P(인식) ── 과녁 모양 나이테 주름</h2>
+        <div class="choices">
+          <div class="choice">
+            <strong><span class="label">J형 선택</span> ➡️ “나이테 주름이 있음”</strong>
+            <p>눈동자 바탕에 과녁 모양처럼 둥글게 패인 주름선이 1개 이상 보인다.</p>
+            <div class="image-slot">📷 여기에 동심원 주름선 이미지 첨부</div>
+          </div>
+          <div class="choice">
+            <strong><span class="label">P형 선택</span> ➡️ “나이테 주름이 없음”</strong>
+            <p>눈동자 바탕에 둥글게 패인 주름선이 없거나 거의 보이지 않고 매끈하다.</p>
+            <div class="image-slot">📷 여기에 주름 없는 평온한 홍채 이미지 첨부</div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
 </body>
 </html>
