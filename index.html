@@ -528,16 +528,16 @@
           <p id="eye-type-summary">결과 유형에 맞는 설명이 표시됩니다.</p>
           <div class="type-facts" aria-label="유형별 세부 설명">
             <div class="type-fact">
-              <strong>홍채 밀도</strong>
-              <span id="eye-type-density">-</span>
+              <strong>홍채 지표</strong>
+              <span id="eye-type-iris">-</span>
             </div>
             <div class="type-fact">
-              <strong>신경계 기질</strong>
-              <span id="eye-type-ans">-</span>
+              <strong>신경계 흐름</strong>
+              <span id="eye-type-nerve">-</span>
             </div>
             <div class="type-fact">
-              <strong>성향 키워드</strong>
-              <span id="eye-type-keywords">-</span>
+              <strong>주의 포인트</strong>
+              <span id="eye-type-focus">-</span>
             </div>
           </div>
           <p class="type-note">눈BTI는 의학적 진단이나 성격의 절대 판정이 아니라, 눈의 인상을 바탕으로 자신을 재미있게 이해하는 관찰형 콘텐츠입니다.</p>
@@ -550,118 +550,54 @@
   <script>
     (function () {
       var result = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
-      var typeDescriptions = {
-        INTJ: {
-          title: "INTJ 통제형 인사이트 아이",
-          summary: "빈틈을 줄이고 전체 구조를 먼저 잡으려는 성향이 강합니다. 조용하지만 기준이 분명하고, 깊이 생각한 뒤 움직이는 타입으로 볼 수 있습니다.",
-          density: "최고로 치밀함 / 촘촘함",
-          ans: "강력한 교감신경 긴장",
-          keywords: "전략, 통제, 집중, 완성도"
+      var traitDescriptions = {
+        E: {
+          title: "E 외향형: 에너지 발산형",
+          iris: "큰 기저 동공, 넓은 자율신경선 거리, 바깥쪽 수축 홈이 비교적 선명한 편으로 해석합니다.",
+          nerve: "외부 자극에 빠르게 반응하고 에너지를 밖으로 쓰는 과연소 흐름으로 설명합니다.",
+          focus: "심혈관 긴장, 세포 산화 스트레스, 기저 염증 관리에 관심을 두는 타입입니다."
         },
-        ISTJ: {
-          title: "ISTJ 규칙형 스테디 아이",
-          summary: "익숙한 기준과 순서를 중시하며, 맡은 일을 안정적으로 끝까지 밀고 가는 성향입니다. 차분하고 신뢰감 있는 분위기가 강하게 나타납니다.",
-          density: "매우 치밀함 / 빽빽함",
-          ans: "교감신경 상진",
-          keywords: "책임감, 규칙, 안정, 신뢰"
+        I: {
+          title: "I 내향형: 내부 집중형",
+          iris: "작은 기저 동공, 좁은 자율신경선 거리, 비교적 매끄러운 바깥 영역으로 해석합니다.",
+          nerve: "자극을 안쪽에서 오래 처리하고 생각 에너지가 내부로 모이는 흐름으로 설명합니다.",
+          focus: "수면의 질, 말초 순환, 브레인 포그, 긴장성 두통 관리에 관심을 두는 타입입니다."
         },
-        INFJ: {
-          title: "INFJ 통찰형 미스틱 아이",
-          summary: "겉으로는 조용하지만 사람과 상황의 흐름을 깊게 읽으려는 성향입니다. 의미와 방향을 중요하게 여기며, 내면의 기준이 섬세합니다.",
-          density: "매우 치밀함 / 빽빽함",
-          ans: "교감신경 상진",
-          keywords: "통찰, 의미, 몰입, 섬세함"
+        S: {
+          title: "S 감각형: 조직 경직형",
+          iris: "자율신경선이 밧줄처럼 굵고 선명하게 드러나는 구조로 해석합니다.",
+          nerve: "현실 자극을 몸으로 버티며 근육과 근막 긴장이 높아지기 쉬운 흐름으로 설명합니다.",
+          focus: "목·어깨 결림, 근막 긴장, 관절 부담, 손발 저림 관리에 관심을 두는 타입입니다."
         },
-        ISFJ: {
-          title: "ISFJ 안정형 케어 아이",
-          summary: "주변을 세심하게 살피고 익숙한 사람과 환경을 안정적으로 지키려는 성향입니다. 조용한 배려와 꾸준함이 강점입니다.",
-          density: "치밀함 / 촘촘함",
-          ans: "교감신경 우세",
-          keywords: "배려, 보호, 안정, 성실"
+        N: {
+          title: "N 직관형: 장벽 투과형",
+          iris: "자율신경선이 실낱처럼 가늘거나 흐릿하고, 경계가 부드럽게 묻히는 구조로 해석합니다.",
+          nerve: "미세 자극과 맥락을 크게 받아들이며 신경 에너지 소모가 커지기 쉬운 흐름으로 설명합니다.",
+          focus: "알레르기성 반응, 과민성 장, 소리·빛 민감도, 신경 피로 관리에 관심을 두는 타입입니다."
         },
-        INTP: {
-          title: "INTP 분석형 쿨로직 아이",
-          summary: "감정보다 원리와 구조를 먼저 파악하려는 성향입니다. 혼자 생각을 정리하며 새로운 관점을 만드는 데 강합니다.",
-          density: "약간 치밀함",
-          ans: "교감신경 성향 우세",
-          keywords: "분석, 논리, 탐구, 독립성"
+        T: {
+          title: "T 사고형: 이성 필터형",
+          iris: "동공 바깥 경계가 매끄럽고 정돈된 원형에 가깝게 보이는 구조로 해석합니다.",
+          nerve: "감정 자극을 논리와 과제로 전환해 위장관 신호를 비교적 안정적으로 지키는 흐름으로 설명합니다.",
+          focus: "과도한 분석 피로를 줄이고, 규칙적인 식사와 휴식 리듬을 유지하는 것이 중요합니다."
         },
-        ISTP: {
-          title: "ISTP 적응형 리얼리스트 아이",
-          summary: "상황을 빠르게 읽고 필요한 만큼만 움직이는 실전형 성향입니다. 말보다 관찰과 행동으로 문제를 해결하려는 흐름이 있습니다.",
-          density: "치밀/느슨 균형",
-          ans: "자율신경 균형",
-          keywords: "실전, 관찰, 적응, 효율"
+        F: {
+          title: "F 감정형: 감정 투과형",
+          iris: "동공 경계에 몽글몽글한 요철이나 부드러운 굴곡이 보이는 구조로 해석합니다.",
+          nerve: "관계와 감정 자극이 장기 신호로 빠르게 내려가기 쉬운 흐름으로 설명합니다.",
+          focus: "소화불량, 신경성 위장 긴장, 감정 피로, 회복 루틴 관리에 관심을 두는 타입입니다."
         },
-        INFP: {
-          title: "INFP 이상형 소프트 아이",
-          summary: "자신만의 가치와 감성을 지키려는 성향입니다. 부드럽지만 내면의 기준이 있고, 진정성 있는 관계에서 힘을 얻습니다.",
-          density: "치밀/느슨 균형",
-          ans: "자율신경 균형",
-          keywords: "가치, 상상, 진정성, 감수성"
+        J: {
+          title: "J 판단형: 부신 과각성형",
+          iris: "동심원 모양의 나이테 주름이 뚜렷하게 보이는 구조로 해석합니다.",
+          nerve: "계획, 통제, 마감 압박 속에서 긴장 호르몬이 오래 유지되기 쉬운 흐름으로 설명합니다.",
+          focus: "만성 피로, 수면 회복, 스트레스성 안구 긴장, 부신 피로 관리에 관심을 두는 타입입니다."
         },
-        ISFP: {
-          title: "ISFP 예술형 무드 아이",
-          summary: "강한 주장보다 자연스러운 감각과 분위기를 중요하게 여기는 성향입니다. 편안한 환경에서 개성과 표현력이 살아납니다.",
-          density: "약간 느슨함",
-          ans: "부교감신경 성향 우세",
-          keywords: "감각, 표현, 자유, 섬세함"
-        },
-        ENTJ: {
-          title: "ENTJ 추진형 리더 아이",
-          summary: "목표를 정하면 방향을 빠르게 잡고 사람과 자원을 움직이려는 성향입니다. 결단력과 추진력이 눈에 띄는 타입입니다.",
-          density: "약간 치밀함",
-          ans: "교감신경 성향 우세",
-          keywords: "목표, 추진, 리더십, 결단"
-        },
-        ESTJ: {
-          title: "ESTJ 관리형 오거나이저 아이",
-          summary: "현실적인 기준으로 일을 정리하고 실행하는 성향입니다. 흐트러진 상황을 구조화하고 책임 있게 관리하는 힘이 있습니다.",
-          density: "치밀/느슨 균형",
-          ans: "자율신경 균형",
-          keywords: "관리, 실행, 기준, 책임"
-        },
-        ENFJ: {
-          title: "ENFJ 교육형 하모니 아이",
-          summary: "사람의 가능성을 보고 이끌어 주려는 성향입니다. 관계 속에서 에너지를 얻고, 분위기를 따뜻하게 조율하는 힘이 있습니다.",
-          density: "치밀/느슨 균형",
-          ans: "자율신경 균형",
-          keywords: "공감, 교육, 조율, 관계"
-        },
-        ESFJ: {
-          title: "ESFJ 사교형 케어 아이",
-          summary: "사람들과의 연결과 분위기를 중요하게 여기는 성향입니다. 주변을 챙기고 함께 안정감을 만드는 데 강합니다.",
-          density: "약간 느슨함",
-          ans: "부교감신경 성향 우세",
-          keywords: "사교, 배려, 협력, 안정"
-        },
-        ENTP: {
-          title: "ENTP 탐구형 스파크 아이",
-          summary: "새로운 아이디어와 가능성을 빠르게 발견하는 성향입니다. 고정된 방식보다 실험과 토론 속에서 에너지가 살아납니다.",
-          density: "느슨함 / 여유 있음",
-          ans: "부교감신경 우세",
-          keywords: "아이디어, 탐구, 토론, 유연성"
-        },
-        ESTP: {
-          title: "ESTP 활동형 에너지 아이",
-          summary: "생각보다 경험을 통해 빠르게 배우는 성향입니다. 현장감, 순발력, 즉각적인 반응이 강하게 나타납니다.",
-          density: "매우 느슨함 / 성김",
-          ans: "부교감신경 강세",
-          keywords: "활동, 순발력, 경험, 현실감"
-        },
-        ENFP: {
-          title: "ENFP 열정형 큐리어스 아이",
-          summary: "가능성과 사람에게 열린 에너지가 큰 성향입니다. 새로운 만남과 아이디어 속에서 활기가 커지고, 분위기를 밝게 만듭니다.",
-          density: "매우 느슨함 / 성김",
-          ans: "부교감신경 강세",
-          keywords: "열정, 호기심, 가능성, 자유"
-        },
-        ESFP: {
-          title: "ESFP 자유형 클리어에너지 아이",
-          summary: "지금 이 순간의 감각과 즐거움을 잘 포착하는 성향입니다. 표현이 자연스럽고 주변에 생동감을 주는 타입입니다.",
-          density: "최고로 느슨함 / 성김",
-          ans: "강력한 부교감신경 이완",
-          keywords: "자유, 표현, 생동감, 즐거움"
+        P: {
+          title: "P 인식형: 대사 완만형",
+          iris: "나이테 주름이 없거나 매우 흐릿하고, 바탕이 비교적 매끄러운 구조로 해석합니다.",
+          nerve: "이완성이 강하고 변화에 유연하지만 대사 엔진이 느긋해지기 쉬운 흐름으로 설명합니다.",
+          focus: "림프 순환, 부종, 기초대사, 혈당·내장지방 관리에 관심을 두는 타입입니다."
         }
       };
 
@@ -701,16 +637,27 @@
       }
 
       function renderTypeDescription(type) {
-        var description = typeDescriptions[type];
-        if (!description) {
+        var traits = type.split("").map(function (letter) {
+          return traitDescriptions[letter];
+        });
+
+        if (traits.some(function (trait) { return !trait; })) {
           return;
         }
 
-        document.getElementById("eye-type-title").innerText = description.title;
-        document.getElementById("eye-type-summary").innerText = description.summary;
-        document.getElementById("eye-type-density").innerText = description.density;
-        document.getElementById("eye-type-ans").innerText = description.ans;
-        document.getElementById("eye-type-keywords").innerText = description.keywords;
+        document.getElementById("eye-type-title").innerText = type + " 전문 해석";
+        document.getElementById("eye-type-summary").innerText = traits.map(function (trait) {
+          return trait.title;
+        }).join(" · ");
+        document.getElementById("eye-type-iris").innerText = traits.map(function (trait) {
+          return trait.iris;
+        }).join(" ");
+        document.getElementById("eye-type-nerve").innerText = traits.map(function (trait) {
+          return trait.nerve;
+        }).join(" ");
+        document.getElementById("eye-type-focus").innerText = traits.map(function (trait) {
+          return trait.focus;
+        }).join(" ");
       }
 
       window.resetEyeTest = function () {
