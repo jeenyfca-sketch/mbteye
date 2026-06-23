@@ -6,17 +6,21 @@
   <title>눈으로 보는 MBTI</title>
   <style>
     :root {
-      --bg: #081418;
-      --panel: #ffffff;
-      --ink: #1d2729;
-      --muted: #617073;
-      --soft: #f5f3ee;
-      --line: #d8ded8;
-      --green: #4a6741;
-      --green-dark: #2e4427;
+      --bg: #0d1b2a;
+      --panel: rgba(27, 38, 59, 0.92);
+      --panel-strong: #1b263b;
+      --ink: #ffffff;
+      --muted: #e0e1dd;
+      --soft: rgba(224, 225, 221, 0.08);
+      --line: #415a77;
+      --guide: rgba(65, 90, 119, 0.34);
+      --accent: #00a8ff;
+      --accent-2: #5dade2;
       --gold: #f0c247;
-      --blue: #1e88e5;
-      --red: #e53935;
+      --blue: #7cc7ff;
+      --red: #ff8fa3;
+      --green: #8fd8d0;
+      --green-dark: #e0e1dd;
     }
 
     * {
@@ -28,8 +32,8 @@
       margin: 0;
       font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
       background:
-        radial-gradient(circle at 20% 22%, rgba(114, 215, 199, 0.18), transparent 34%),
-        radial-gradient(circle at 80% 70%, rgba(240, 194, 71, 0.14), transparent 28%),
+        radial-gradient(circle at 18% 16%, rgba(0, 168, 255, 0.22), transparent 34%),
+        radial-gradient(circle at 82% 72%, rgba(65, 90, 119, 0.42), transparent 30%),
         var(--bg);
       color: var(--ink);
     }
@@ -43,19 +47,21 @@
     .app-shell {
       background: var(--panel);
       border-radius: 12px;
-      box-shadow: 0 18px 54px rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(224, 225, 221, 0.12);
+      box-shadow: 0 22px 64px rgba(0, 0, 0, 0.36);
       overflow: hidden;
+      backdrop-filter: blur(14px);
     }
 
     .header {
       padding: 28px 24px 22px;
       text-align: center;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(65, 90, 119, 0.74);
     }
 
     h1 {
       margin: 0 0 8px;
-      color: var(--green-dark);
+      color: var(--ink);
       font-size: clamp(25px, 6vw, 38px);
       letter-spacing: 0;
       line-height: 1.25;
@@ -72,17 +78,18 @@
     .guide {
       margin: 0;
       padding: 16px;
-      border-left: 5px solid var(--gold);
+      border: 1px solid rgba(124, 199, 255, 0.24);
+      border-left: 5px solid var(--accent);
       border-radius: 8px;
-      background: #fffde7;
-      color: #4f5144;
+      background: var(--guide);
+      color: var(--muted);
       text-align: left;
       font-size: 15px;
       line-height: 1.65;
     }
 
     .progress {
-      color: #8a9497;
+      color: var(--accent-2);
       font-size: 15px;
       font-weight: 700;
       margin-bottom: 10px;
@@ -102,7 +109,7 @@
     .step h2,
     .result h2 {
       margin: 0 0 22px;
-      color: var(--green-dark);
+      color: var(--ink);
       font-size: 22px;
       line-height: 1.38;
       text-align: center;
@@ -122,19 +129,20 @@
       padding: 16px;
       border: 2px solid var(--line);
       border-radius: 10px;
-      background: #fff;
+      background: rgba(13, 27, 42, 0.58);
       text-align: center;
       cursor: pointer;
-      transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+      transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
       font: inherit;
       color: inherit;
     }
 
     .choice:hover,
     .choice:focus-visible {
-      border-color: var(--green);
+      border-color: var(--accent);
+      background: rgba(0, 168, 255, 0.14);
       transform: translateY(-2px);
-      box-shadow: 0 10px 26px rgba(8, 20, 24, 0.12);
+      box-shadow: 0 14px 30px rgba(0, 168, 255, 0.2), 0 0 0 1px rgba(124, 199, 255, 0.16) inset;
       outline: none;
     }
 
@@ -144,7 +152,7 @@
       object-fit: cover;
       border-radius: 7px;
       margin-bottom: 15px;
-      background: var(--soft);
+      background: #0d1b2a;
     }
 
     .choice-title {
@@ -197,9 +205,9 @@
     .reset-button {
       margin-top: 28px;
       padding: 13px 26px;
-      border: 0;
+      border: 1px solid var(--line);
       border-radius: 7px;
-      background: #222;
+      background: #1b263b;
       color: #fff;
       cursor: pointer;
       font: inherit;
@@ -208,7 +216,7 @@
 
     .reset-button:hover,
     .reset-button:focus-visible {
-      background: var(--green-dark);
+      background: var(--accent);
       outline: none;
     }
 
