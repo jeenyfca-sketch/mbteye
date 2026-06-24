@@ -421,6 +421,65 @@
       line-height: 1.65;
     }
 
+    .master-cta {
+      max-width: 720px;
+      margin: 30px auto 0;
+      padding: 22px;
+      border: 1px solid rgba(124, 199, 255, 0.24);
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(0, 168, 255, 0.2), transparent 34%),
+        linear-gradient(135deg, rgba(13, 27, 42, 0.96), rgba(27, 38, 59, 0.92) 52%, rgba(4, 32, 68, 0.96));
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(124, 199, 255, 0.1) inset;
+      text-align: center;
+    }
+
+    .master-cta-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .master-cta-button {
+      display: flex;
+      min-height: 116px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      padding: 18px 16px;
+      border: 1px solid rgba(124, 199, 255, 0.34);
+      border-radius: 12px;
+      background: rgba(13, 27, 42, 0.68);
+      color: var(--ink);
+      cursor: pointer;
+      font: inherit;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 0 0 1px rgba(0, 168, 255, 0.08) inset;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .master-cta-button:hover,
+    .master-cta-button:focus-visible {
+      border-color: rgba(124, 199, 255, 0.9);
+      background: rgba(0, 168, 255, 0.2);
+      box-shadow: 0 16px 30px rgba(0, 168, 255, 0.18), 0 0 0 1px rgba(124, 199, 255, 0.28) inset;
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .master-cta-button strong {
+      color: #ffffff;
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .master-cta-button span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
     .reset-button {
       margin-top: 28px;
       padding: 13px 26px;
@@ -469,6 +528,14 @@
 
       .type-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .master-cta {
+        padding: 16px;
+      }
+
+      .master-cta-actions {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -689,6 +756,19 @@
         <section class="type-library" aria-label="16가지 기질 리포트">
           <p class="type-library-guide">"보충 설명이나 상세 분석 소견을 보시려면, 아래 본인에 맞는 타입을 클릭해 보세요."</p>
           <div class="type-grid" id="type-grid"></div>
+        </section>
+
+        <section class="master-cta" aria-label="눈비TI 신청 및 문의">
+          <div class="master-cta-actions">
+            <button class="master-cta-button" type="button" aria-label="눈비TI 마스터 가이드북 신청">
+              <strong>📘 눈비TI 마스터 가이드북 신청</strong>
+              <span>나의 기질에 맞는 상세 웰니스 리포트 요약본을 받아보세요.</span>
+            </button>
+            <button class="master-cta-button" type="button" aria-label="기업 강연 및 출강 문의하기">
+              <strong>🎤 기업 강연 및 출강 문의하기</strong>
+              <span>조직의 스트레스 완화와 생산성 향상을 위한 기질 맞춤형 솔루션</span>
+            </button>
+          </div>
         </section>
 
         <button class="reset-button" type="button" onclick="resetEyeTest()">다시 확인하기</button>
