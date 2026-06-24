@@ -19,14 +19,16 @@ for (const needle of [
   "eye-result-screen",
   "eye-mbti-text",
   "eye-graphic",
-  "E형 선택",
-  "I형 선택",
-  "S형 선택",
-  "N형 선택",
-  "T형 선택",
-  "F형 선택",
-  "J형 선택",
-  "P형 선택"
+  "동공이 크다",
+  "동공이 작다",
+  "밧줄처럼 두꺼운 링 선",
+  "실낱처럼 가느다란 실선",
+  "매끄러운 원형 테두리",
+  "전체 요철형 테두리",
+  "일부분 요철형 테두리",
+  "나이테 주름이 있음",
+  "나이테 주름이 없음",
+  "처음으로 되돌아가기"
 ]) {
   if (!html.includes(needle)) {
     console.error(`index.html missing required content: ${needle}`);
