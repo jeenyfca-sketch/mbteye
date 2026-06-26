@@ -315,20 +315,20 @@
 
     .type-library {
       max-width: 620px;
-      margin: 28px auto 0;
+      margin: 18px auto 0;
       text-align: left;
     }
 
     .type-library-guide {
-      margin: 0 0 16px;
-      padding: 14px 16px;
+      margin: 0 0 22px;
+      padding: 9px 14px;
       border: 1px solid rgba(124, 199, 255, 0.22);
       border-radius: 8px;
       background: rgba(65, 90, 119, 0.22);
       color: var(--muted);
       font-size: 15px !important;
       font-style: italic;
-      line-height: 1.6;
+      line-height: 1.45;
     }
 
     .type-grid {
@@ -484,7 +484,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin: 28px auto 0;
+      margin: 26px auto 0;
       padding: 13px 26px;
       border: 1px solid var(--line);
       border-radius: 7px;
@@ -761,12 +761,12 @@
           <p class="type-note">눈비티아이는 MBTI처럼 사람을 고정된 유형으로 나누는 검사가 아니라, 홍채 관찰을 통해 <strong>성향, 에너지 소모 방식, 관계 반응, 스트레스 취약점</strong>을 대중적으로 이해하게 만드는 콘텐츠형 모델입니다.</p>
         </article>
 
+        <button class="reset-button" type="button" onclick="resetEyeTest()">처음으로 되돌아가기</button>
+
         <section class="type-library" aria-label="16가지 기질 리포트">
           <p class="type-library-guide">"보충 설명이나 상세 분석 소견을 보시려면, 아래 본인에 맞는 타입을 클릭해 보세요."</p>
           <div class="type-grid" id="type-grid"></div>
         </section>
-
-        <button class="reset-button" type="button" onclick="resetEyeTest()">처음으로 되돌아가기</button>
 
         <section class="master-cta" aria-label="눈비TI 신청 및 문의">
           <div class="master-cta-actions">
