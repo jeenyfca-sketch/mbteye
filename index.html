@@ -292,7 +292,7 @@
 
     .type-fact {
       display: grid;
-      grid-template-columns: 118px 1fr;
+      grid-template-columns: 132px 1fr;
       gap: 10px;
       padding: 10px 12px;
       border-radius: 8px;
@@ -303,7 +303,22 @@
     }
 
     .type-fact strong {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       color: var(--blue);
+    }
+
+    .fact-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: rgba(124, 199, 255, 0.14);
+      box-shadow: inset 0 0 0 1px rgba(124, 199, 255, 0.22);
+      font-size: 15px;
     }
 
     .type-note {
@@ -1067,15 +1082,15 @@
           <p id="eye-type-summary">결과 유형에 맞는 설명이 표시됩니다.</p>
           <div class="type-facts" aria-label="유형별 세부 설명">
             <div class="type-fact">
-              <strong>자율신경 분석</strong>
+              <strong><span class="fact-badge" aria-hidden="true">🧠</span> 자율신경 분석</strong>
               <span id="eye-type-analysis">-</span>
             </div>
             <div class="type-fact">
-              <strong>건강 조언</strong>
+              <strong><span class="fact-badge" aria-hidden="true">⚠️</span> 건강 조언</strong>
               <span id="eye-type-health">-</span>
             </div>
             <div class="type-fact">
-              <strong>영양 가이드</strong>
+              <strong><span class="fact-badge" aria-hidden="true">💊</span> 영양 가이드</strong>
               <span id="eye-type-nutrition">-</span>
             </div>
           </div>
@@ -1087,7 +1102,6 @@
         <button class="reset-button" type="button" onclick="resetEyeTest()">처음으로 되돌아가기</button>
 
         <section class="type-library" aria-label="16가지 기질 리포트">
-          <p class="type-library-guide">"상세 분석 소견을 보시려면, 아래 본인에 맞는 타입을 클릭해 보세요."</p>
           <div class="type-grid" id="type-grid"></div>
         </section>
 
