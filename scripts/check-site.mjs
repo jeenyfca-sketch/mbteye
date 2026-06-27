@@ -28,7 +28,13 @@ for (const needle of [
   "일부분 요철형 테두리",
   "나이테 주름이 있음",
   "나이테 주름이 없음",
-  "처음으로 되돌아가기"
+  "처음으로 되돌아가기",
+  "compatibility",
+  "compat-my-type",
+  "compat-partner-type",
+  "compatibility-button",
+  "makeCompatibilityReport",
+  "renderCompatibility"
 ]) {
   if (!html.includes(needle)) {
     console.error(`index.html missing required content: ${needle}`);

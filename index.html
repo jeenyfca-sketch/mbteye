@@ -421,6 +421,163 @@
       line-height: 1.65;
     }
 
+    .compatibility {
+      max-width: 620px;
+      margin: 34px auto 0;
+      padding: 18px;
+      border: 1px solid rgba(124, 199, 255, 0.22);
+      border-radius: 12px;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(0, 168, 255, 0.18), transparent 34%),
+        rgba(13, 27, 42, 0.58);
+      text-align: left;
+    }
+
+    .compatibility h3 {
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 21px;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .compatibility-intro {
+      margin: 0 auto 16px !important;
+      max-width: 540px !important;
+      color: var(--muted);
+      font-size: 14px !important;
+      line-height: 1.65 !important;
+      text-align: center;
+    }
+
+    .compatibility-controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .compatibility-field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .compatibility-field label {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .compatibility-field select {
+      width: 100%;
+      min-height: 44px;
+      padding: 0 12px;
+      border: 1px solid rgba(124, 199, 255, 0.38);
+      border-radius: 8px;
+      background: rgba(27, 38, 59, 0.92);
+      color: var(--ink);
+      font: inherit;
+      font-weight: 800;
+    }
+
+    .compatibility-action {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid rgba(124, 199, 255, 0.5);
+      border-radius: 9px;
+      background: rgba(0, 168, 255, 0.22);
+      color: var(--ink);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 900;
+      transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .compatibility-action:hover,
+    .compatibility-action:focus-visible {
+      background: rgba(0, 168, 255, 0.34);
+      box-shadow: 0 14px 28px rgba(0, 168, 255, 0.18);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .compatibility-result {
+      display: none;
+      margin-top: 16px;
+      padding: 15px;
+      border: 1px solid rgba(124, 199, 255, 0.22);
+      border-radius: 10px;
+      background: rgba(27, 38, 59, 0.66);
+    }
+
+    .compatibility-result.open {
+      display: block;
+    }
+
+    .compatibility-score {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .score-badge {
+      display: grid;
+      width: 86px;
+      height: 86px;
+      place-items: center;
+      border: 1px solid rgba(124, 199, 255, 0.44);
+      border-radius: 50%;
+      background: rgba(0, 168, 255, 0.2);
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: 900;
+      box-shadow: 0 0 24px rgba(0, 168, 255, 0.18);
+    }
+
+    .compatibility-result h4 {
+      margin: 0 0 6px;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .compatibility-result p {
+      margin: 0;
+      max-width: none;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .compatibility-cards {
+      display: grid;
+      gap: 10px;
+    }
+
+    .compatibility-card {
+      padding: 12px;
+      border: 1px solid rgba(65, 90, 119, 0.58);
+      border-radius: 9px;
+      background: rgba(13, 27, 42, 0.46);
+      color: var(--muted);
+    }
+
+    .compatibility-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--blue);
+      font-size: 15px;
+    }
+
+    .compatibility-note {
+      margin-top: 12px !important;
+      padding-top: 10px;
+      border-top: 1px solid rgba(224, 225, 221, 0.12);
+      color: rgba(224, 225, 221, 0.74) !important;
+      font-size: 13px !important;
+    }
+
     .master-cta {
       max-width: 720px;
       margin: 34px auto 0;
@@ -531,6 +688,19 @@
 
       .type-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .compatibility {
+        padding: 16px;
+      }
+
+      .compatibility-controls,
+      .compatibility-score {
+        grid-template-columns: 1fr;
+      }
+
+      .score-badge {
+        margin: 0 auto;
       }
 
       .master-cta {
@@ -768,6 +938,23 @@
           <div class="type-grid" id="type-grid"></div>
         </section>
 
+        <section class="compatibility" aria-label="눈BTI 관계 궁합 리포트">
+          <h3>눈BTI 관계 궁합 리포트</h3>
+          <p class="compatibility-intro">두 사람의 에너지 사용 방식, 스트레스 반응, 회복 리듬이 어떻게 맞물리는지 재미있게 비교해 보세요.</p>
+          <div class="compatibility-controls">
+            <div class="compatibility-field">
+              <label for="compat-my-type">내 눈BTI</label>
+              <select id="compat-my-type"></select>
+            </div>
+            <div class="compatibility-field">
+              <label for="compat-partner-type">상대 눈BTI</label>
+              <select id="compat-partner-type"></select>
+            </div>
+          </div>
+          <button class="compatibility-action" type="button" id="compatibility-button">우리의 눈BTI 궁합 보기</button>
+          <article class="compatibility-result" id="compatibility-result" aria-live="polite"></article>
+        </section>
+
         <section class="master-cta" aria-label="눈비TI 신청 및 문의">
           <div class="master-cta-actions">
             <button class="master-cta-button" type="button" aria-label="눈비TI 마스터 가이드북 신청">
@@ -923,6 +1110,7 @@
         "ISTJ", "ISTP", "ISFJ", "ISFP",
         "INTJ", "INTP", "INFJ", "INFP"
       ];
+      var axisNames = ["에너지 방향", "정보 수용", "정서 반응", "회복 리듬"];
       var activeExpandedType = "";
 
       function escapeHTML(value) {
@@ -958,6 +1146,166 @@
         expanded.className = "type-expanded";
         expanded.id = "type-expanded";
         grid.appendChild(expanded);
+      }
+
+      function buildCompatibilitySelectors() {
+        var mySelect = document.getElementById("compat-my-type");
+        var partnerSelect = document.getElementById("compat-partner-type");
+
+        [mySelect, partnerSelect].forEach(function (select) {
+          select.innerHTML = "";
+          typeOrder.forEach(function (type) {
+            var option = document.createElement("option");
+            option.value = type;
+            option.innerText = type;
+            select.appendChild(option);
+          });
+        });
+
+        partnerSelect.value = "ENFP";
+        document.getElementById("compatibility-button").addEventListener("click", renderCompatibility);
+      }
+
+      function setCompatibilityType(type) {
+        var mySelect = document.getElementById("compat-my-type");
+        var partnerSelect = document.getElementById("compat-partner-type");
+
+        if (!mySelect || !partnerSelect) {
+          return;
+        }
+
+        mySelect.value = type;
+        if (partnerSelect.value === type) {
+          partnerSelect.value = type === "ENFP" ? "ISTJ" : "ENFP";
+        }
+        document.getElementById("compatibility-result").classList.remove("open");
+      }
+
+      function getAxisInsight(myType, partnerType, index) {
+        var mine = myType[index];
+        var partner = partnerType[index];
+        var same = mine === partner;
+
+        if (index === 0) {
+          if (same && mine === "E") {
+            return "두 사람 모두 외부 자극에 빠르게 반응해 관계 초반의 활력은 강하지만, 교감신경이 같이 올라가면 말과 감정의 속도가 과열될 수 있습니다.";
+          }
+          if (same && mine === "I") {
+            return "둘 다 에너지를 안쪽에 모으는 흐름이라 안정감은 좋지만, 불편함을 오래 말하지 않으면 긴장이 조용히 축적될 수 있습니다.";
+          }
+          return "한 사람은 에너지를 밖으로 열고, 한 사람은 안쪽에서 회복합니다. 속도 차이를 존중하면 좋은 완급 조절 궁합이 됩니다.";
+        }
+
+        if (index === 1) {
+          if (same && mine === "S") {
+            return "현실 감각과 관찰 포인트가 비슷해 생활 리듬은 잘 맞습니다. 다만 둘 다 눈앞의 문제에 몰입하면 긴장 신호를 크게 느낄 수 있습니다.";
+          }
+          if (same && mine === "N") {
+            return "가능성과 의미를 함께 읽어내는 조합입니다. 대화의 확장성은 좋지만, 몸이 보내는 피로 신호를 놓치지 않는 장치가 필요합니다.";
+          }
+          return "한쪽은 구체적인 감각을, 다른 한쪽은 큰 흐름을 먼저 봅니다. 서로의 관찰 방식을 번역해 주면 관계의 시야가 넓어집니다.";
+        }
+
+        if (index === 2) {
+          if (same && mine === "T") {
+            return "둘 다 감정을 이성적으로 정리하려 해 갈등 해결은 빠를 수 있습니다. 대신 몸의 긴장이나 서운함이 뒤늦게 올라오는지 살펴야 합니다.";
+          }
+          if (same && mine === "F") {
+            return "정서 공명이 빠른 조합입니다. 따뜻함은 크지만 한쪽의 불안이 다른 한쪽의 미주신경 긴장으로 번지기 쉬워 안정 루틴이 중요합니다.";
+          }
+          return "한쪽은 구조와 해결책을, 다른 한쪽은 감정의 온도를 먼저 봅니다. 갈등 때 '해결'과 '공감' 순서를 함께 맞추면 균형이 좋아집니다.";
+        }
+
+        if (same && mine === "J") {
+          return "둘 다 긴장을 정리하고 계획하려는 힘이 강합니다. 안정감은 좋지만 책임감이 겹치면 어깨, 목, 수면 긴장으로 나타날 수 있습니다.";
+        }
+        if (same && mine === "P") {
+          return "회복 리듬이 유연해 함께 있을 때 압박감이 적습니다. 다만 생활 리듬이 느슨해지면 피로 관리가 뒤로 밀릴 수 있습니다.";
+        }
+        return "한쪽은 정리와 예측을 원하고, 한쪽은 여유와 변화를 원합니다. 일정은 단단하게, 실행 방식은 부드럽게 두면 충돌이 줄어듭니다.";
+      }
+
+      function makeCompatibilityReport(myType, partnerType) {
+        var sameCount = 0;
+        var insights = [];
+        var cautions = [];
+
+        for (var index = 0; index < 4; index += 1) {
+          if (myType[index] === partnerType[index]) {
+            sameCount += 1;
+          }
+          insights.push(axisNames[index] + ": " + getAxisInsight(myType, partnerType, index));
+        }
+
+        var score = 58 + sameCount * 7;
+        if (myType[0] !== partnerType[0]) {
+          score += 5;
+        }
+        if (myType[1] !== partnerType[1]) {
+          score += 3;
+        }
+        if (myType[2] !== partnerType[2]) {
+          score += 4;
+        }
+        if (myType[3] !== partnerType[3]) {
+          score += 2;
+        }
+        if (myType === partnerType) {
+          score = 88;
+        }
+        score = Math.min(score, 94);
+
+        if (myType[0] !== partnerType[0]) {
+          cautions.push("외향/내향 리듬 차이로 한쪽은 대화가 부족하다고 느끼고, 다른 한쪽은 회복 시간이 부족하다고 느낄 수 있습니다.");
+        }
+        if (myType[2] !== partnerType[2]) {
+          cautions.push("갈등 상황에서 한쪽은 해결책을, 다른 한쪽은 정서적 확인을 먼저 원할 수 있습니다.");
+        }
+        if (myType[3] === "J" && partnerType[3] === "J") {
+          cautions.push("둘 다 긴장을 오래 붙잡으면 수면의 질 저하, 목과 어깨 긴장처럼 교감신경 과열 신호가 나타날 수 있습니다.");
+        }
+        if (myType[2] === "F" && partnerType[2] === "F") {
+          cautions.push("정서 공명이 빠른 만큼 관계 스트레스가 명치 답답함이나 소화 긴장으로 이어지는지 살펴보면 좋습니다.");
+        }
+        if (!cautions.length) {
+          cautions.push("큰 충돌보다는 생활 속 작은 속도 차이가 쌓일 수 있습니다. 피곤할 때의 말투와 휴식 시간을 먼저 조율해 보세요.");
+        }
+
+        return {
+          score: score,
+          title: myType + " × " + partnerType + " 신경계 리듬 궁합",
+          summary: sameCount >= 3
+            ? "기본 리듬이 비슷해 안정감이 큰 조합입니다. 다만 비슷한 긴장 패턴이 동시에 올라올 때는 의식적인 환기가 필요합니다."
+            : sameCount === 2
+              ? "닮은 점과 다른 점이 균형을 이루는 조합입니다. 서로의 반응 속도를 이해하면 관계 에너지가 안정적으로 흐릅니다."
+              : "서로 다른 리듬이 많은 보완형 조합입니다. 처음에는 낯설 수 있지만 역할을 나누면 관계의 시야가 넓어집니다.",
+          rhythm: insights.join(" "),
+          signal: cautions.join(" "),
+          recipe: "관계가 과열될 때는 10분 산책, 물 한 컵, 깊은 호흡 5회처럼 몸을 먼저 안정시키는 짧은 루틴을 공유해 보세요. 대화는 '지금 필요한 게 해결인지, 공감인지'를 먼저 묻는 방식이 좋습니다."
+        };
+      }
+
+      function renderCompatibility() {
+        var myType = document.getElementById("compat-my-type").value;
+        var partnerType = document.getElementById("compat-partner-type").value;
+        var report = makeCompatibilityReport(myType, partnerType);
+        var container = document.getElementById("compatibility-result");
+
+        container.innerHTML =
+          '<div class="compatibility-score">' +
+            '<div class="score-badge">' + report.score + '</div>' +
+            '<div>' +
+              '<h4>' + escapeHTML(report.title) + '</h4>' +
+              '<p>' + escapeHTML(report.summary) + '</p>' +
+            '</div>' +
+          '</div>' +
+          '<div class="compatibility-cards">' +
+            '<div class="compatibility-card"><strong>🧠 자율신경 리듬</strong><p>' + escapeHTML(report.rhythm) + '</p></div>' +
+            '<div class="compatibility-card"><strong>⚠️ 관계 스트레스 신호</strong><p>' + escapeHTML(report.signal) + '</p></div>' +
+            '<div class="compatibility-card"><strong>🌿 관계 웰니스 팁</strong><p>' + escapeHTML(report.recipe) + '</p></div>' +
+          '</div>' +
+          '<p class="compatibility-note">이 리포트는 의학적 진단이나 관계의 성공 여부를 판정하는 검사가 아니라, 두 사람의 에너지 사용 방식과 스트레스 반응을 재미있게 비교하는 웰니스 콘텐츠입니다.</p>';
+        container.classList.add("open");
       }
 
       function toggleTypeReport(type) {
@@ -1041,6 +1389,7 @@
 
         document.getElementById("eye-mbti-text").innerText = finalMbti;
         renderTypeDescription(finalMbti);
+        setCompatibilityType(finalMbti);
         document.getElementById("eye-result-screen").classList.add("active");
       }
 
@@ -1067,10 +1416,12 @@
           item.setAttribute("aria-expanded", "false");
         });
         document.getElementById("type-expanded").classList.remove("open");
+        document.getElementById("compatibility-result").classList.remove("open");
         showStep(1);
       };
 
       buildTypeGrid();
+      buildCompatibilitySelectors();
     })();
   </script>
 </body>
