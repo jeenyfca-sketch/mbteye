@@ -393,114 +393,6 @@
       line-height: 1.72;
     }
 
-    .type-library {
-      max-width: 620px;
-      margin: 10px auto 0;
-      text-align: left;
-    }
-
-    .type-library-guide {
-      margin: 0 0 30px;
-      padding: 9px 14px;
-      border: 1px solid rgba(124, 199, 255, 0.22);
-      border-radius: 8px;
-      background: rgba(65, 90, 119, 0.22);
-      color: var(--muted);
-      font-size: 15px !important;
-      font-style: italic;
-      line-height: 1.45;
-    }
-
-    .type-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      align-items: start;
-    }
-
-    .type-pill {
-      min-height: 48px;
-      padding: 12px 10px;
-      border: 1px solid rgba(124, 199, 255, 0.42);
-      border-radius: 25px;
-      background: rgba(13, 27, 42, 0.82);
-      color: var(--ink);
-      box-shadow: 0 0 0 1px rgba(0, 168, 255, 0.08) inset, 0 0 18px rgba(0, 168, 255, 0.1);
-      cursor: pointer;
-      font: inherit;
-      font-size: 15px;
-      font-weight: 900;
-      letter-spacing: 0;
-      transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
-    }
-
-    .type-pill:hover,
-    .type-pill:focus-visible,
-    .type-pill.active {
-      border-color: rgba(124, 199, 255, 0.95);
-      background: rgba(0, 168, 255, 0.24);
-      box-shadow: 0 16px 28px rgba(0, 168, 255, 0.18), 0 0 0 1px rgba(124, 199, 255, 0.38) inset;
-      transform: translateY(-2px);
-      outline: none;
-    }
-
-    .type-expanded {
-      grid-column: 1 / -1;
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(-6px);
-      transition: max-height 260ms ease, opacity 220ms ease, transform 220ms ease;
-    }
-
-    .type-expanded.open {
-      max-height: 900px;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .expanded-stack {
-      display: grid;
-      gap: 10px;
-      margin: 6px 0 8px;
-      padding: 14px;
-      border: 1px solid rgba(124, 199, 255, 0.2);
-      border-radius: 12px;
-      background: rgba(13, 27, 42, 0.52);
-    }
-
-    .expanded-card {
-      padding: 14px;
-      border-radius: 9px;
-      border: 1px solid rgba(65, 90, 119, 0.58);
-      background: rgba(27, 38, 59, 0.72);
-      color: var(--muted);
-    }
-
-    .expanded-card.signal {
-      border-color: rgba(240, 194, 71, 0.34);
-      background: rgba(240, 194, 71, 0.1);
-    }
-
-    .expanded-card.recipe {
-      border-color: rgba(143, 216, 208, 0.34);
-      background: rgba(143, 216, 208, 0.1);
-    }
-
-    .expanded-card h4 {
-      margin: 0 0 8px;
-      color: var(--ink);
-      font-size: 16px;
-      line-height: 1.4;
-    }
-
-    .expanded-card p {
-      margin: 0;
-      max-width: none;
-      font-size: 14px;
-      line-height: 1.65;
-    }
-
     .compatibility {
       max-width: none;
       margin: 34px auto 0;
@@ -848,10 +740,6 @@
         grid-template-columns: 1fr;
       }
 
-      .type-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
       .compatibility {
         padding: 16px;
       }
@@ -1101,10 +989,6 @@
 
         <button class="reset-button" type="button" onclick="resetEyeTest()">처음으로 되돌아가기</button>
 
-        <section class="type-library" aria-label="16가지 기질 리포트">
-          <div class="type-grid" id="type-grid"></div>
-        </section>
-
         <section class="compatibility" aria-label="눈BTI 관계 궁합 리포트">
           <h3>눈BTI 관계 궁합 리포트</h3>
           <p class="compatibility-intro">두 사람의 에너지 사용 방식, 스트레스 반응, 회복 리듬이 어떻게 맞물리는지 재미있게 비교해 보세요.</p>
@@ -1299,8 +1183,6 @@
         "INTJ", "INTP", "INFJ", "INFP"
       ];
       var axisNames = ["에너지 방향", "정보 수용", "정서 반응", "회복 리듬"];
-      var activeExpandedType = "";
-
       function escapeHTML(value) {
         return String(value).replace(/[&<>"']/g, function (character) {
           return {
@@ -1311,29 +1193,6 @@
             "'": "&#39;"
           }[character];
         });
-      }
-
-      function buildTypeGrid() {
-        var grid = document.getElementById("type-grid");
-        var expanded = document.createElement("div");
-
-        grid.innerHTML = "";
-        typeOrder.forEach(function (type) {
-          var button = document.createElement("button");
-          button.className = "type-pill";
-          button.type = "button";
-          button.dataset.type = type;
-          button.setAttribute("aria-expanded", "false");
-          button.innerText = type;
-          button.addEventListener("click", function () {
-            toggleTypeReport(type);
-          });
-          grid.appendChild(button);
-        });
-
-        expanded.className = "type-expanded";
-        expanded.id = "type-expanded";
-        grid.appendChild(expanded);
       }
 
       function buildCompatibilitySelectors() {
@@ -1702,55 +1561,6 @@
         openCompatibilityReader(container, report, "rhythm");
       }
 
-      function toggleTypeReport(type) {
-        var grid = document.getElementById("type-grid");
-        var expanded = document.getElementById("type-expanded");
-        var button = grid.querySelector('[data-type="' + type + '"]');
-        var description = typeDescriptions[type];
-
-        if (!button || !description) {
-          return;
-        }
-
-        if (activeExpandedType === type && expanded.classList.contains("open")) {
-          expanded.classList.remove("open");
-          button.classList.remove("active");
-          button.setAttribute("aria-expanded", "false");
-          activeExpandedType = "";
-          return;
-        }
-
-        grid.querySelectorAll(".type-pill").forEach(function (item) {
-          item.classList.remove("active");
-          item.setAttribute("aria-expanded", "false");
-        });
-
-        expanded.classList.remove("open");
-        expanded.innerHTML =
-          '<div class="expanded-stack">' +
-            '<article class="expanded-card">' +
-              '<h4>🔹 자율신경 구조 분석</h4>' +
-              '<p>' + escapeHTML(description.mechanism) + '</p>' +
-            '</article>' +
-            '<article class="expanded-card signal">' +
-              '<h4>⚠️ 바디 시그널 (Body Signal)</h4>' +
-              '<p>' + escapeHTML(description.health) + '</p>' +
-            '</article>' +
-            '<article class="expanded-card recipe">' +
-              '<h4>🔋 웰니스 레시피 (Wellness Recipe)</h4>' +
-              '<p><strong>💊 추천 영양소:</strong> ' + escapeHTML(description.nutrition) + '<br>' +
-              '<strong>🔋 데일리 루틴:</strong> ' + escapeHTML(description.routine) + '</p>' +
-            '</article>' +
-          '</div>';
-        button.insertAdjacentElement("afterend", expanded);
-        button.classList.add("active");
-        button.setAttribute("aria-expanded", "true");
-        activeExpandedType = type;
-        requestAnimationFrame(function () {
-          expanded.classList.add("open");
-        });
-      }
-
       function showStep(step) {
         document.querySelectorAll(".step").forEach(function (section) {
           section.classList.remove("active");
@@ -1837,19 +1647,12 @@
         result = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
         document.getElementById("eye-header").style.display = "block";
         document.getElementById("eye-result-screen").classList.remove("active");
-        activeExpandedType = "";
-        document.querySelectorAll(".type-pill").forEach(function (item) {
-          item.classList.remove("active");
-          item.setAttribute("aria-expanded", "false");
-        });
-        document.getElementById("type-expanded").classList.remove("open");
         document.getElementById("compatibility-result").classList.remove("open");
         document.getElementById("type-deep-panel").classList.remove("open");
         document.getElementById("type-deep-button").style.display = "none";
         showStep(1);
       };
 
-      buildTypeGrid();
       buildCompatibilitySelectors();
     })();
   </script>
