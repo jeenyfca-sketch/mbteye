@@ -34,7 +34,10 @@ for (const needle of [
   "compat-partner-type",
   "compatibility-button",
   "makeCompatibilityReport",
-  "renderCompatibility"
+  "renderCompatibility",
+  "compatibility-tabs",
+  "compatibility-reader",
+  "openCompatibilityReader"
 ]) {
   if (!html.includes(needle)) {
     console.error(`index.html missing required content: ${needle}`);
