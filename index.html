@@ -1496,21 +1496,32 @@
         if (!sectionItems.length) {
           return "";
         }
-        if (sectionItems.length === 1) {
-          return sectionItems[0].headline;
-        }
-        return sectionItems.length + "개 축의 핵심 포인트 보기";
+        return "한 문장으로 읽는 관계 리포트";
       }
 
-      function renderReaderSection(item) {
-        var points = item.points.map(function (point) {
-          return "<li>" + escapeHTML(point) + "</li>";
-        }).join("");
+      function getCompatibilityItemText(item) {
+        if (item.summary) {
+          return item.summary.replace(/^한줄 요약:\s*/, "");
+        }
+        if (item.points.length) {
+          return item.points.join(" ");
+        }
+        return item.headline;
+      }
+
+      function renderCompatibilitySentence(sectionItems, key) {
+        var endings = {
+          rhythm: "이런 신경계 케미를 가진 조합입니다.",
+          signal: "이런 몸의 경고가 올라오기 쉬운 조합입니다.",
+          recipe: "이런 루틴을 함께 챙기면 관계 에너지가 훨씬 부드러워집니다."
+        };
+        var bridges = ["처음 만날 때는", "정보를 받아들일 때는", "감정이 부딪힐 때는", "쉬고 회복할 때는"];
+        var sentence = sectionItems.map(function (item, index) {
+          return bridges[index] + " " + getCompatibilityItemText(item);
+        }).join(" ");
+
         return '<section class="reader-section">' +
-          '<h5>' + escapeHTML(item.axis) + '</h5>' +
-          '<p class="reader-headline">' + escapeHTML(item.headline) + '</p>' +
-          (points ? '<ul>' + points + '</ul>' : '') +
-          (item.summary ? '<p class="reader-summary">' + escapeHTML(item.summary) + '</p>' : '') +
+          '<p class="reader-headline">' + escapeHTML(sentence + " " + endings[key]) + '</p>' +
         '</section>';
       }
 
@@ -1529,7 +1540,7 @@
 
         reader.innerHTML =
           '<h4>' + escapeHTML(labels[key]) + '</h4>' +
-          report.sections[key].map(renderReaderSection).join("");
+          renderCompatibilitySentence(report.sections[key], key);
       }
 
       function renderCompatibility() {
@@ -1622,10 +1633,27 @@
         deepPanel.innerHTML = "";
         deepButton.setAttribute("aria-expanded", "false");
 
-        if (!description.deepDive) {
-          deepButton.style.display = "none";
-          return;
-        }
+        var deepDive = description.deepDive || {
+          title: "눈BTI 비밀 시그널",
+          sections: [
+            {
+              title: "👁️ 1. 눈동자 구조가 말해주는 기본 리듬",
+              body: description.analysis + " 이 조합은 눈BTI식으로 볼 때 몸이 에너지를 켜고, 받아들이고, 반응하고, 회복하는 방식을 보여주는 관찰 포인트입니다."
+            },
+            {
+              title: "⚡ 2. 평소 몸이 켜지는 방식",
+              body: description.mechanism
+            },
+            {
+              title: "⚠️ 3. 컨디션이 흔들릴 때 보내는 신호",
+              body: description.health
+            },
+            {
+              title: "🌿 4. 나에게 맞는 회복 루틴",
+              body: description.nutrition + " 데일리 루틴으로는 " + description.routine + "가 잘 어울립니다."
+            }
+          ]
+        };
 
         deepButton.style.display = "inline-flex";
         deepButton.onclick = function () {
@@ -1638,8 +1666,8 @@
           }
 
           deepPanel.innerHTML =
-            '<h4>' + escapeHTML(description.deepDive.title) + '</h4>' +
-            description.deepDive.sections.map(function (section) {
+            '<h4>' + escapeHTML(deepDive.title) + '</h4>' +
+            deepDive.sections.map(function (section) {
               return '<section class="type-deep-section">' +
                 '<h5>' + escapeHTML(section.title) + '</h5>' +
                 '<p>' + escapeHTML(section.body) + '</p>' +
