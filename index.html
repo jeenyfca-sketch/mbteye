@@ -595,6 +595,35 @@
       line-height: 1.4 !important;
     }
 
+    .reader-axis-card {
+      padding: 14px;
+      border: 1px solid rgba(124, 199, 255, 0.18);
+      border-radius: 10px;
+      background: rgba(13, 27, 42, 0.36);
+    }
+
+    .reader-axis-card + .reader-axis-card {
+      margin-top: 12px;
+    }
+
+    .reader-axis-card h5 {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .reader-line {
+      margin: 0 !important;
+      color: var(--ink) !important;
+      font-size: 15px !important;
+      line-height: 1.75 !important;
+    }
+
+    .reader-line + .reader-line {
+      margin-top: 8px !important;
+    }
+
     .reader-section ul {
       display: grid;
       gap: 8px;
@@ -1386,6 +1415,10 @@
         return item.headline;
       }
 
+      function splitReadableSentences(text) {
+        return text.split(/(?<=\.)\s+/).filter(Boolean);
+      }
+
       function renderCompatibilitySentence(sectionItems, key) {
         var endings = {
           rhythm: "이런 신경계 케미를 가진 조합입니다.",
@@ -1393,12 +1426,20 @@
           recipe: "이런 루틴을 함께 챙기면 관계 에너지가 훨씬 부드러워집니다."
         };
         var bridges = ["처음 만날 때는", "정보를 받아들일 때는", "감정이 부딪힐 때는", "쉬고 회복할 때는"];
-        var sentence = sectionItems.map(function (item, index) {
-          return bridges[index] + " " + getCompatibilityItemText(item);
-        }).join(" ");
+        var cards = sectionItems.map(function (item, index) {
+          var lines = splitReadableSentences(getCompatibilityItemText(item)).map(function (line) {
+            return '<p class="reader-line">' + escapeHTML(line) + '</p>';
+          }).join("");
+
+          return '<article class="reader-axis-card">' +
+            '<h5>' + escapeHTML(bridges[index]) + '</h5>' +
+            lines +
+          '</article>';
+        }).join("");
 
         return '<section class="reader-section">' +
-          '<p class="reader-headline">' + escapeHTML(sentence + " " + endings[key]) + '</p>' +
+          cards +
+          '<p class="reader-summary">' + escapeHTML(endings[key]) + '</p>' +
         '</section>';
       }
 
