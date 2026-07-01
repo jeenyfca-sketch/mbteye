@@ -1425,7 +1425,12 @@
           signal: "이런 몸의 경고가 올라오기 쉬운 조합입니다.",
           recipe: "이런 루틴을 함께 챙기면 관계 에너지가 훨씬 부드러워집니다."
         };
-        var bridges = ["처음 만날 때는", "정보를 받아들일 때는", "감정이 부딪힐 때는", "쉬고 회복할 때는"];
+        var bridgeSets = {
+          rhythm: ["처음 만날 때는", "정보를 받아들일 때는", "감정이 부딪힐 때는", "쉬고 회복할 때는"],
+          signal: ["에너지가 과열될 때는", "생각이 엇갈릴 때는", "감정이 상할 때는", "회복 리듬이 깨질 때는"],
+          recipe: ["에너지 충전법", "대화 맞추는 법", "감정 다루는 법", "회복 리듬 맞추기"]
+        };
+        var bridges = bridgeSets[key] || bridgeSets.rhythm;
         var cards = sectionItems.map(function (item, index) {
           var lines = splitReadableSentences(getCompatibilityItemText(item)).map(function (line) {
             return '<p class="reader-line">' + escapeHTML(line) + '</p>';
